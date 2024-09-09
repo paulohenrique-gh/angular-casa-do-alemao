@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { germanStates, State } from '../../data';
+import { GalleryImage, galleryImages, germanStates, State } from '../../data';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -7,10 +7,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class CountryInfoService {
   private states: BehaviorSubject<State[]> = new BehaviorSubject<State[]>(germanStates);
+  private galleryImages: BehaviorSubject<GalleryImage[]> = new BehaviorSubject<GalleryImage[]>(galleryImages);
 
   constructor() { }
 
   getStates(): Observable<State[]> {
     return this.states.asObservable();
+  }
+
+  getImages(): Observable<GalleryImage[]> {
+    return this.galleryImages.asObservable();
   }
 }
