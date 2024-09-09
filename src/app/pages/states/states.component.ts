@@ -3,11 +3,12 @@ import { State } from '../../../data';
 import { CountryInfoService } from '../../services/country-info.service';
 import { SplitParagraphPipe } from '../../pipes/split-paragraph.pipe';
 import { CommonModule } from '@angular/common';
+import { StatCardComponent } from "../../components/stat-card/stat-card.component";
 
 @Component({
   selector: 'app-states',
   standalone: true,
-  imports: [SplitParagraphPipe, CommonModule],
+  imports: [SplitParagraphPipe, CommonModule, StatCardComponent],
   templateUrl: './states.component.html',
   styleUrl: './states.component.scss',
   host: { class: 'w-full' },
