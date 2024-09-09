@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { germanStates, State } from '../../data';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
