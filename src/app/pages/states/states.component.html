@@ -1,22 +1,25 @@
 <div class="flex gap-8">
-  <section class="flex flex-col gap-4 max-w-sm p-6 border rounded-lg shadow bg-gray-800 border-gray-700">
+  <section class="flex flex-col gap-4 w-2/4 max-w-sm p-6 border rounded-lg shadow bg-gray-800 border-gray-700">
     <h1 class="text-xl px-3 uppercase tracking-wider first-letter:text-3xl text-white">Estados</h1>
 
-    <ul class="text-gray-400 ">
+    <ul class="text-gray-400">
       @for (state of states; track $index) {
-      <li class="">
-        <a href="/states" class="block p-3 hover:text-white hover:bg-gray-900 rounded-md">{{ state.name }}</a>
-      </li>
+        <li [ngClass]="(selectedState === state ? 'text-white bg-gray-900 font-semibold ' : '') + 'block p-3 hover:text-white cursor-pointer rounded-md'"
+            (click)="selectState(state.id)"
+        >
+          {{ state.name }}
+        </li>
       }
     </ul>
   </section>
 
   <section class="w-3/4 flex flex-col gap-8 text-gray-900">
-    <h1 class="text-3xl uppercase tracking-wider first-letter:text-5xl">Berlin</h1>
+    <h1 class="text-3xl uppercase tracking-wider first-letter:text-5xl">{{ selectedState?.name }}</h1>
 
-    @for (paragraph of testContent | splitParagraph; track $index) {
+    @for (paragraph of selectedState?.description | splitParagraph; track $index) {
       <p>{{ paragraph }}</p>
     }
 
   </section>
+
 </div>
