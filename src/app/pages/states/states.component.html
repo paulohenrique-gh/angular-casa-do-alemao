@@ -4,20 +4,31 @@
 
     <ul class="text-gray-400">
       @for (state of states; track $index) {
-        <li [ngClass]="(selectedState === state ? 'text-white bg-gray-900 font-semibold ' : '') + 'block p-3 hover:text-white cursor-pointer rounded-md'"
-            (click)="selectState(state.id)"
-        >
-          {{ state.name }}
-        </li>
+      <li [ngClass]="(selectedState === state ? 'text-white bg-gray-900 font-semibold ' : '') + 'block p-3 hover:text-white cursor-pointer rounded-md'"
+        (click)="selectState(state.id)">
+        {{ state.name }}
+      </li>
       }
     </ul>
   </section>
 
   <section class="w-3/4 flex flex-col gap-8 text-gray-900">
-    <h1 class="text-3xl uppercase tracking-wider first-letter:text-5xl">{{ selectedState?.name }}</h1>
+    <div>
+      <h1 class="text-3xl uppercase tracking-wider first-letter:text-5xl">{{ selectedState?.name }}</h1>
+      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 justify-items-center">
+      <app-stat-card name="Capital" [value]="selectedState?.capital"></app-stat-card>
+      <app-stat-card name="População" [value]="selectedState?.population"></app-stat-card>
+      <app-stat-card name="Área" [value]="selectedState?.areaInSquareKm + ' km²'"></app-stat-card>
+      <app-stat-card name="Região" [value]="selectedState?.region"></app-stat-card>
+    </div>
+
+    <hr class="w-48 h-1 mx-auto my-4 border-0 rounded md:my-10 bg-gray-700">
 
     @for (paragraph of selectedState?.description | splitParagraph; track $index) {
-      <p>{{ paragraph }}</p>
+    <p>{{ paragraph }}</p>
     }
 
   </section>
