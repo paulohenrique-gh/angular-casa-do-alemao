@@ -8,6 +8,11 @@ export interface State {
   description: string;
 }
 
+export interface GalleryImage {
+  imageUrl: string;
+  description: string;
+}
+
 export const germanStates: State[] = [
   {
     id: 1,
@@ -218,6 +223,57 @@ export const germanStates: State[] = [
     Thüringen tem uma economia baseada em indústrias médias, agricultura e turismo. A combinação de natureza, cultura e história faz do estado um destino atrativo para visitantes e residentes.`
   }
 ];
+
+export const galleryImages: GalleryImage[] = [
+  {
+    imageUrl: 'https://images.pexels.com/photos/109629/pexels-photo-109629.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/547494/pexels-photo-547494.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/1119972/pexels-photo-1119972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/756688/pexels-photo-756688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/1128416/pexels-photo-1128416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/2570063/pexels-photo-2570063.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/161849/cologne-dom-night-architecture-161849.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/532864/pexels-photo-532864.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/591383/pexels-photo-591383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/415687/pexels-photo-415687.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/970763/pexels-photo-970763.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/1128408/pexels-photo-1128408.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: ''
+  }
+]
 
 export interface CountryInfo {
   name: string;
