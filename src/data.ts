@@ -40,7 +40,7 @@ export const germanStates: State[] = [
     name: "Berlin",
     capital: "Berlin",
     population: "3,6 milhões",
-    areaInSquareKm: "891,8",
+    areaInSquareKm: "891,82",
     region: "Nordeste",
     description: `Berlin (Berlim em português) é a capital da Alemanha e uma cidade com uma história rica e complexa. Dividida durante a Guerra Fria, Berlim é hoje um símbolo de reunificação e progresso. Monumentos como o Portão de Brandemburgo e o Muro de Berlim são testemunhas de seu passado.
 
