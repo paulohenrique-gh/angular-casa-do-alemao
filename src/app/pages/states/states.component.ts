@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { State } from '../../../data';
 import { CountryInfoService } from '../../services/country-info.service';
 import { SplitParagraphPipe } from '../../pipes/split-paragraph.pipe';
 import { CommonModule } from '@angular/common';
 import { StatCardComponent } from "../../components/stat-card/stat-card.component";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-states',
@@ -13,20 +14,25 @@ import { StatCardComponent } from "../../components/stat-card/stat-card.componen
   styleUrl: './states.component.scss',
   host: { class: 'w-full' },
 })
-export class StatesComponent implements OnInit {
+export class StatesComponent implements OnInit, OnDestroy {
   states: State[] = [];
   selectedState!: State | undefined;
+  subscription!: Subscription;
 
   constructor(private countryInfoService: CountryInfoService) {}
 
   ngOnInit(): void {
-    this.countryInfoService.getStates().subscribe({
+    this.subscription = this.countryInfoService.getStates().subscribe({
       next: (states) => {
         this.states = states;
         this.selectedState = states.find(state => state.name === 'Berlin');
       },
       error: (error) => console.log(error),
     });
+  }
+
+  ngOnDestroy(): void {
+      this.subscription.unsubscribe();
   }
 
   selectState(id: number): void {
