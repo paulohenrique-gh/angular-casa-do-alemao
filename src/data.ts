@@ -295,18 +295,72 @@ export const galleryImages: GalleryImage[] = [
   }
 ]
 
-export interface CountryInfo {
-  name: string;
-  capital: string;
-  officialLanguage: string;
-  currency: string;
-  government: string;
-  areaInSquareKm: number;
-  statesQuantity: number;
-  largestCity: string;
-  borders: string;
-  mainReligion: string;
-  gdp: string;
-  climage: string;
-  states: State[];
-}
+export const articles: Article[] = [
+  {
+    imageUrl: 'https://example.com/germany-history.jpg',
+    title: 'A História da Alemanha',
+    previewText: 'Uma jornada pela rica história da Alemanha, desde os tempos antigos até os dias atuais.',
+    content: 'A Alemanha possui uma longa e fascinante história que abrange séculos, desde o período do Sacro Império Romano até a ascensão e queda do Terceiro Reich. \n\nO país teve um papel crucial em ambas as Guerras Mundiais e passou por uma dramática divisão durante a Guerra Fria, com a separação entre a Alemanha Ocidental e a Alemanha Oriental pelo Muro de Berlim. \n\nApós a reunificação em 1990, a Alemanha se tornou um dos países mais estáveis e poderosos da Europa, consolidando-se como uma força econômica e política global.',
+    publicationDate: new Date('2023-09-01'),
+    user: {
+      username: 'John Doe',
+      role: 'admin'
+    }
+  },
+  {
+    imageUrl: 'https://example.com/germany-culture.jpg',
+    title: 'A Cultura Alemã',
+    previewText: 'Descubra os aspectos mais fascinantes da cultura e tradições da Alemanha.',
+    content: 'A Alemanha é um país rico em tradições culturais que influenciam o mundo até hoje. \n\nBerço de grandes compositores como Johann Sebastian Bach e Ludwig van Beethoven, e de filósofos como Immanuel Kant, o país é um centro de inovação e arte. \n\nAlém disso, festivais como a Oktoberfest, que celebra a cerveja e a cultura bávara, são mundialmente conhecidos e atraem milhões de turistas todos os anos. \n\nA cena artística moderna da Alemanha, especialmente em cidades como Berlim, é vibrante, refletindo um país que valoriza a expressão cultural e a diversidade.',
+    publicationDate: new Date('2023-09-05'),
+    user: {
+      username: 'João Dão',
+      role: 'admin'
+    }
+  },
+  {
+    imageUrl: 'https://example.com/germany-economy.jpg',
+    title: 'A Economia da Alemanha',
+    previewText: 'Entenda por que a Alemanha é a maior economia da Europa e a quarta maior do mundo.',
+    content: 'A Alemanha é reconhecida por sua poderosa economia, sendo a maior da Europa e a quarta maior do mundo. \n\nO país é amplamente conhecido por sua indústria automotiva, com marcas como Volkswagen, BMW, Mercedes-Benz e Audi liderando o mercado global. \n\nAlém disso, a Alemanha é um líder em ciência, tecnologia e inovação, com investimentos significativos em pesquisa e desenvolvimento. \n\nSua economia diversificada, combinada com um sistema de educação robusto e uma infraestrutura de classe mundial, faz da Alemanha um dos destinos mais atraentes para negócios e talentos de todo o mundo.',
+    publicationDate: new Date('2023-09-10'),
+    user: {
+      username: 'Joana Joelho',
+      role: 'admin'
+    }
+  },
+  {
+    imageUrl: 'https://example.com/germany-history.jpg',
+    title: 'A História da Alemanha',
+    previewText: 'Uma jornada pela rica história da Alemanha, desde os tempos antigos até os dias atuais.',
+    content: 'A Alemanha possui uma longa e fascinante história que abrange séculos, desde o período do Sacro Império Romano até a ascensão e queda do Terceiro Reich. \n\nO país teve um papel crucial em ambas as Guerras Mundiais e passou por uma dramática divisão durante a Guerra Fria, com a separação entre a Alemanha Ocidental e a Alemanha Oriental pelo Muro de Berlim. \n\nApós a reunificação em 1990, a Alemanha se tornou um dos países mais estáveis e poderosos da Europa, consolidando-se como uma força econômica e política global.',
+    publicationDate: new Date('2023-09-01'),
+    user: {
+      username: 'John Doe',
+      role: 'admin'
+    }
+  },
+  {
+    imageUrl: 'https://example.com/germany-culture.jpg',
+    title: 'A Cultura Alemã',
+    previewText: 'Descubra os aspectos mais fascinantes da cultura e tradições da Alemanha.',
+    content: 'A Alemanha é um país rico em tradições culturais que influenciam o mundo até hoje. \n\nBerço de grandes compositores como Johann Sebastian Bach e Ludwig van Beethoven, e de filósofos como Immanuel Kant, o país é um centro de inovação e arte. \n\nAlém disso, festivais como a Oktoberfest, que celebra a cerveja e a cultura bávara, são mundialmente conhecidos e atraem milhões de turistas todos os anos. \n\nA cena artística moderna da Alemanha, especialmente em cidades como Berlim, é vibrante, refletindo um país que valoriza a expressão cultural e a diversidade.',
+    publicationDate: new Date('2023-09-05'),
+    user: {
+      username: 'João Dão',
+      role: 'admin'
+    }
+  },
+  {
+    imageUrl: 'https://example.com/germany-economy.jpg',
+    title: 'A Economia da Alemanha',
+    previewText: 'Entenda por que a Alemanha é a maior economia da Europa e a quarta maior do mundo.',
+    content: 'A Alemanha é reconhecida por sua poderosa economia, sendo a maior da Europa e a quarta maior do mundo. \n\nO país é amplamente conhecido por sua indústria automotiva, com marcas como Volkswagen, BMW, Mercedes-Benz e Audi liderando o mercado global. \n\nAlém disso, a Alemanha é um líder em ciência, tecnologia e inovação, com investimentos significativos em pesquisa e desenvolvimento. \n\nSua economia diversificada, combinada com um sistema de educação robusto e uma infraestrutura de classe mundial, faz da Alemanha um dos destinos mais atraentes para negócios e talentos de todo o mundo.',
+    publicationDate: new Date('2023-09-10'),
+    user: {
+      username: 'Joana Joelho',
+      role: 'admin'
+    }
+  }
+
+];
