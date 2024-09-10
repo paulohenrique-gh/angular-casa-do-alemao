@@ -10,7 +10,8 @@ import { HeaderComponent } from "../../components/header/header.component";
   standalone: true,
   imports: [AsyncPipe, DatePipe, HeaderComponent],
   templateUrl: './articles.component.html',
-  styleUrl: './articles.component.scss'
+  styleUrl: './articles.component.scss',
+  host: {class: 'w-full'}
 })
 export class ArticlesComponent implements OnInit {
   articles$!: Observable<Article[]>
