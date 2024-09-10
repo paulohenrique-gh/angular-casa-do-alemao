@@ -13,15 +13,6 @@ export interface GalleryImage {
   description: string;
 }
 
-export interface Article {
-  imageUrl: string;
-  title: string;
-  previewText: string;
-  content: string;
-  publicationDate: Date;
-  user: UserDTO;
-}
-
 export interface User {
   username: string;
   password: string;
@@ -309,6 +300,7 @@ export const galleryImages: GalleryImage[] = [
 
 export const articles: Article[] = [
   {
+    id: 1,
     imageUrl:
       'https://partiupelomundo.com/wp-content/uploads/2017/01/alemanha-pontos-turisticos.jpg',
     title: 'A História da Alemanha',
@@ -323,6 +315,7 @@ export const articles: Article[] = [
     },
   },
   {
+    id: 2,
     imageUrl:
       'https://i.pinimg.com/736x/f2/e6/d7/f2e6d70b3ee062e30c7b50ee057aac51.jpg',
     title: 'A Cultura Alemã',
@@ -337,6 +330,7 @@ export const articles: Article[] = [
     },
   },
   {
+    id: 3,
     imageUrl:
       'https://brasilalemanhanews.com.br/wp-content/uploads/2015/nwdalThomasImophotothek_destaque.JPG',
     title: 'A Economia da Alemanha',
@@ -351,6 +345,7 @@ export const articles: Article[] = [
     },
   },
   {
+    id: 4,
     imageUrl:
       'https://partiupelomundo.com/wp-content/uploads/2017/01/lugares-mais-bonitos-alemanha.jpg',
     title: 'Turismo na Alemanha',
@@ -365,6 +360,7 @@ export const articles: Article[] = [
     },
   },
   {
+    id: 5,
     imageUrl:
       'https://www.tatsachen-ueber-deutschland.de/sites/default/files/styles/style_image_small/public/2023-01/244638933-Foto-Industrie-in-Deutschland.jpg?itok=rnA0FbSd',
     title: 'A Indústria Automotiva Alemã',
@@ -379,6 +375,7 @@ export const articles: Article[] = [
     },
   },
   {
+    id: 6,
     imageUrl: 'https://www.tatsachen-ueber-deutschland.de/sites/default/files/styles/style_image/public/2023-02/AdobeStock_361523785.jpg?itok=iy2DkCf1',
     title: 'Educação na Alemanha',
     previewText:
