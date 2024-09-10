@@ -5,11 +5,12 @@ import { SplitParagraphPipe } from '../../pipes/split-paragraph.pipe';
 import { CommonModule } from '@angular/common';
 import { StatCardComponent } from "../../components/stat-card/stat-card.component";
 import { Subscription } from 'rxjs';
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
   selector: 'app-states',
   standalone: true,
-  imports: [SplitParagraphPipe, CommonModule, StatCardComponent],
+  imports: [SplitParagraphPipe, CommonModule, StatCardComponent, HeaderComponent],
   templateUrl: './states.component.html',
   styleUrl: './states.component.scss',
   host: { class: 'w-full' },

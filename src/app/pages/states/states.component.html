@@ -13,10 +13,7 @@
   </section>
 
   <section class="w-3/4 flex flex-col gap-8 text-gray-900">
-    <div>
-      <h1 class="text-3xl uppercase tracking-wider first-letter:text-5xl">{{ selectedState?.name }}</h1>
-      <hr class="h-px mt-2 my-8 bg-gray-200 border-0 dark:bg-gray-700">
-    </div>
+    <app-header [header]="selectedState?.name"></app-header>
 
     <div class="grid grid-cols-2 gap-4 justify-items-center">
       <app-stat-card name="Capital" [value]="selectedState?.capital"></app-stat-card>
