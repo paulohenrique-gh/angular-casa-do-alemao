@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Article } from '../../../data';
 import { ArticleService } from '../../services/article.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { HeaderComponent } from "../../components/header/header.component";
+import { RouterModule } from '@angular/router';
+import { Article } from '../../models/article';
 
 @Component({
   selector: 'app-articles',
   standalone: true,
-  imports: [AsyncPipe, DatePipe, HeaderComponent],
+  imports: [AsyncPipe, DatePipe, HeaderComponent, RouterModule],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
   host: {class: 'w-full'}
