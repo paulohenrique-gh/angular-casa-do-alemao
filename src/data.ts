@@ -13,6 +13,26 @@ export interface GalleryImage {
   description: string;
 }
 
+export interface Article {
+  imageUrl: string;
+  title: string;
+  previewText: string;
+  content: string;
+  publicationDate: Date;
+  user: UserDTO;
+}
+
+export interface User {
+  username: string;
+  password: string;
+  role: 'admin' | 'user'
+}
+
+export interface UserDTO {
+  username: string;
+  role: 'admin' | 'user'
+}
+
 export const germanStates: State[] = [
   {
     id: 1,
