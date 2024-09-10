@@ -1,0 +1,19 @@
+<app-header header="Artigos"></app-header>
+
+<div class="grid grid-cols-3 gap-x-5 gap-y-9 justify-items-center">
+  @for (article of articles$ | async; track $index) {
+  <div class="h-auto max-w-sm min-w-96 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a [routerLink]="[article.id]">
+      <img class="w-full h-48 object-cover rounded-t-lg" [src]="article.imageUrl" alt="" (error)="loadDefaultImage($event)" />
+      <div class="p-5 h-56 flex flex-col gap-4 justify-around">
+        <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ article.title }}</h5>
+        <p class="font-normal text-ellipsis line-clamp-3 text-gray-700 dark:text-gray-400">{{ article.previewText }}</p>
+        <div class="flex justify-between items-center">
+          <p class="font-bold text-white">{{ article.user.name }}</p>
+          <small class="text-gray-400">{{ article.publicationDate | date:'dd/MM/yyyy' }}</small>
+        </div>
+      </div>
+    </a>
+  </div>
+  }
+</div>

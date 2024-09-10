@@ -1,0 +1,13 @@
+<div class="flex flex-col gap-4 w-3/5 m-auto">
+  <ng-container *ngIf="article$ | async as article; else notFound">
+    <app-header [header]="article.title"></app-header>
+
+    <img [src]="article.imageUrl" alt="" class="w-2/4 mx-auto mb-8 rounded-lg shadow-lg">
+  
+    @for (paragraph of article.content | splitParagraph; track $index) {
+      <p>{{ paragraph }}</p>
+    }
+  </ng-container>
+
+  <ng-template #notFound>Article not found</ng-template>
+</div>

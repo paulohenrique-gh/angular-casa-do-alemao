@@ -9,7 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [RouterOutlet, NavbarComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  host: { class: 'flex flex-col justify-between h-screen' },
+  host: { class: 'flex flex-col min-h-screen' },
 })
 export class AppComponent {
   title = 'projeto-paises';

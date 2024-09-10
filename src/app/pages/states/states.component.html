@@ -1,36 +1,30 @@
-<div class="flex gap-8">
-  <section class="flex flex-col gap-4 w-2/4 max-w-sm p-6 border rounded-lg shadow bg-gray-800 border-gray-700">
-    <h1 class="text-xl px-3 uppercase tracking-wider first-letter:text-3xl text-white">Estados</h1>
+<section class="flex flex-col gap-4 w-2/4 max-w-sm p-6 border rounded-lg shadow bg-gray-800 border-gray-700">
+  <h1 class="text-xl px-3 uppercase tracking-wider first-letter:text-3xl text-white">Estados</h1>
 
-    <ul class="text-gray-400">
-      @for (state of states; track $index) {
-      <li [ngClass]="(selectedState === state ? 'text-white bg-gray-900 font-semibold ' : '') + 'block p-3 hover:text-white cursor-pointer rounded-md'"
-        (click)="selectState(state.id)">
-        {{ state.name }}
-      </li>
-      }
-    </ul>
-  </section>
-
-  <section class="w-3/4 flex flex-col gap-8 text-gray-900">
-    <div>
-      <h1 class="text-3xl uppercase tracking-wider first-letter:text-5xl">{{ selectedState?.name }}</h1>
-      <hr class="h-px mt-2 my-8 bg-gray-200 border-0 dark:bg-gray-700">
-    </div>
-
-    <div class="grid grid-cols-2 gap-4 justify-items-center">
-      <app-stat-card name="Capital" [value]="selectedState?.capital"></app-stat-card>
-      <app-stat-card name="População" [value]="selectedState?.population"></app-stat-card>
-      <app-stat-card name="Área" [value]="selectedState?.areaInSquareKm + ' km²'"></app-stat-card>
-      <app-stat-card name="Região" [value]="selectedState?.region"></app-stat-card>
-    </div>
-
-    <hr class="w-48 h-1 mx-auto my-4 border-0 rounded md:my-10 bg-gray-700">
-
-    @for (paragraph of selectedState?.description | splitParagraph; track $index) {
-    <p>{{ paragraph }}</p>
+  <ul class="text-gray-400">
+    @for (state of states; track $index) {
+    <li [ngClass]="(selectedState === state ? 'text-white bg-gray-900 font-semibold ' : '') + 'block p-3 hover:text-white cursor-pointer rounded-md'"
+      (click)="selectState(state.id)">
+      {{ state.name }}
+    </li>
     }
+  </ul>
+</section>
 
-  </section>
+<section class="w-3/4 flex flex-col gap-8 text-gray-900">
+  <app-header [header]="selectedState?.name"></app-header>
 
-</div>
+  <div class="grid grid-cols-2 gap-4 justify-items-center">
+    <app-stat-card name="Capital" [value]="selectedState?.capital"></app-stat-card>
+    <app-stat-card name="População" [value]="selectedState?.population"></app-stat-card>
+    <app-stat-card name="Área" [value]="selectedState?.areaInSquareKm + ' km²'"></app-stat-card>
+    <app-stat-card name="Região" [value]="selectedState?.region"></app-stat-card>
+  </div>
+
+  <hr class="w-48 h-1 mx-auto my-4 border-0 rounded md:my-10 bg-gray-700">
+
+  @for (paragraph of selectedState?.description | splitParagraph; track $index) {
+  <p>{{ paragraph }}</p>
+  }
+
+</section>

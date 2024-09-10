@@ -1,0 +1,174 @@
+{
+  "users": [
+    {
+      "id": "a1b2c3d4",
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "password123",
+      "role": "editor"
+    },
+    {
+      "id": "e5f6g7h8",
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "password": "password456",
+      "role": "user"
+    },
+    {
+      "id": "i9j0k1l2",
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "password": "password789",
+      "role": "editor"
+    },
+    {
+      "id": "m3n4o5p6",
+      "name": "Bob Brown",
+      "email": "bob.brown@example.com",
+      "password": "password101",
+      "role": "user"
+    }
+  ],
+  "articles": [
+    {
+      "id": "un89Jjn",
+      "imageUrl": "https://partiupelomundo.com/wp-content/uploads/2017/01/alemanha-pontos-turisticos.jpg",
+      "title": "A História da Alemanha",
+      "previewText": "Uma jornada pela rica história da Alemanha, desde os tempos antigos até os dias atuais.",
+      "content": "A Alemanha, um país com uma rica e complexa história, passou por transformações significativas ao longo dos séculos. Desde suas origens como uma coleção de tribos germânicas até sua unificação como um império, o território que compreende a Alemanha moderna tem sido o cenário de eventos cruciais na história europeia e global. No início, as tribos germânicas ocupavam a região e mantinham uma cultura fortemente tribal, resistindo à conquista romana e preservando suas tradições. Ao longo dos séculos, a região fragmentada começou a se consolidar, especialmente com a ascensão de líderes carismáticos que influenciaram as alianças entre as diversas tribos e reinos menores. Durante a Idade Média, a região foi central no Sacro Império Romano-Germânico, que, apesar de seu nome, consistia em uma confederação fragmentada de estados autônomos que compartilhavam um imperador. A ideia de uma nação alemã, no entanto, ainda estava distante, e as rivalidades entre esses estados atrasaram a unificação por muitos séculos. Mesmo assim, figuras proeminentes, como Carlos Magno, moldaram a identidade do que viria a ser a Alemanha moderna. Durante esse período, a região floresceu culturalmente, com o desenvolvimento de grandes universidades e centros de comércio. No entanto, os conflitos entre estados e a influência estrangeira, como a guerra com a França, marcaram uma era de divisão e competição interna.\n\nCom o advento da Era Moderna, a Alemanha começou a desempenhar um papel mais proeminente nas guerras e nos conflitos religiosos e políticos da Europa. A Reforma Protestante, iniciada por Martinho Lutero em 1517, teve um impacto profundo na região, dividindo os estados entre católicos e protestantes e levando a décadas de guerra religiosa. A Guerra dos Trinta Anos, que começou como um conflito religioso e se expandiu para envolver a maior parte da Europa, devastou grande parte do território alemão. Ao fim do conflito, a Paz de Vestfália, em 1648, enfraqueceu o Sacro Império Romano-Germânico e deixou a região ainda mais fragmentada. Essa fragmentação dificultou qualquer tentativa de unificação política durante os séculos subsequentes. Apesar da devastação, o século XVIII trouxe um renascimento cultural para a Alemanha, com figuras como Goethe e Schiller liderando um florescimento intelectual e artístico. O movimento do Iluminismo também teve uma forte presença no país, levando à modernização de muitos aspectos sociais e políticos.\n\nFoi apenas no século XIX, com a ascensão da Prússia, que a unificação da Alemanha se tornou uma realidade. Sob a liderança do chanceler Otto von Bismarck, a Prússia derrotou a Áustria e a França em uma série de guerras que consolidaram sua posição como o estado mais poderoso da região. Em 1871, após a vitória na Guerra Franco-Prussiana, o Império Alemão foi proclamado em Versalhes, com o rei da Prússia tornando-se o imperador da Alemanha. A unificação trouxe uma nova era de prosperidade e crescimento industrial, mas também de militarismo. O Império Alemão rapidamente se tornou uma potência europeia, com uma economia robusta e um exército formidável. No entanto, as tensões internas e as rivalidades com outras nações europeias levariam a conflitos futuros. A Alemanha, agora unificada, se viu envolvida em uma série de alianças e disputas que culminariam na Primeira Guerra Mundial.\n\nA derrota da Alemanha na Primeira Guerra Mundial teve consequências catastróficas. O Tratado de Versalhes, assinado em 1919, impôs duras penalidades econômicas e territoriais ao país, além de humilhá-lo diplomaticamente. A república que se seguiu, conhecida como República de Weimar, enfrentou anos de instabilidade econômica, agitação política e descontentamento popular. Esses problemas foram exacerbados pela Grande Depressão, que levou a altos índices de desemprego e inflação. O ressentimento com o Tratado de Versalhes e a situação econômica precária criaram um terreno fértil para o crescimento de movimentos radicais, incluindo o Partido Nazista, liderado por Adolf Hitler. Em 1933, Hitler ascendeu ao poder, e a Alemanha embarcou em uma trajetória de expansionismo agressivo e ditadura totalitária, culminando na Segunda Guerra Mundial, que devastou a Europa e trouxe consequências desastrosas para o país e o mundo.\n\nApós a Segunda Guerra Mundial, a Alemanha foi dividida em zonas de ocupação pelos Aliados, resultando na criação da Alemanha Ocidental e Oriental em 1949. A Guerra Fria transformou o país em um dos principais cenários de tensão entre os blocos capitalista e comunista. A Alemanha Ocidental, apoiada pelos Estados Unidos e seus aliados, tornou-se uma potência econômica, enquanto a Alemanha Oriental, sob o controle soviético, experimentou dificuldades econômicas e políticas. A divisão física da Alemanha, simbolizada pelo Muro de Berlim, durou até 1989, quando o colapso dos regimes comunistas no leste europeu e a pressão popular levaram à reunificação pacífica do país em 1990. Desde então, a Alemanha se consolidou como uma das principais potências da Europa, tanto econômica quanto politicamente, e desempenha um papel crucial na União Europeia e nos assuntos globais.",
+      "publicationDate": "2023-09-01T00:00:00.000Z",
+      "user": {
+        "id": "i9j0k1l2",
+        "name": "Alice Johnson",
+        "role": "editor"
+      }
+    },
+    {
+      "id": "8UUjkx",
+      "imageUrl": "https://i.pinimg.com/736x/f2/e6/d7/f2e6d70b3ee062e30c7b50ee057aac51.jpg",
+      "title": "A Cultura Alemã",
+      "previewText": "Descubra os aspectos mais fascinantes da cultura e tradições da Alemanha.",
+      "content": "A Alemanha é um país com uma rica herança cultural que moldou e continua a influenciar o mundo de várias maneiras. Desde a Idade Média até os tempos modernos, a Alemanha tem sido o berço de muitos movimentos culturais, filosóficos e artísticos importantes. A tradição musical da Alemanha é uma das mais renomadas do mundo, com compositores clássicos como Johann Sebastian Bach, Ludwig van Beethoven e Richard Wagner, que deixaram um legado duradouro na música ocidental. Bach, por exemplo, é amplamente considerado um dos maiores compositores de todos os tempos, e suas obras são estudadas e apreciadas por músicos e amantes da música em todo o mundo. Beethoven, com suas sinfonias inovadoras e profundamente emocionantes, ajudou a definir a era clássica da música, enquanto Wagner revolucionou a ópera com suas ideias e técnicas dramáticas. Esses compositores não apenas enriqueceram a cultura musical da Alemanha, mas também influenciaram a música globalmente, estabelecendo padrões e tradições que continuam a ser relevantes hoje.\n\nAlém da música, a filosofia alemã também desempenhou um papel crucial na formação do pensamento ocidental. Filósofos como Immanuel Kant, Friedrich Nietzsche e Georg Wilhelm Friedrich Hegel exploraram questões fundamentais sobre a natureza da existência, a moralidade e a verdade. Kant, com sua obra \"Crítica da Razão Pura\", estabeleceu as bases do idealismo e do pensamento crítico moderno, enquanto Nietzsche desafiou as normas culturais e morais estabelecidas com suas ideias sobre o \"Übermensch\" e a vontade de poder. Hegel, por sua vez, contribuiu com suas teorias sobre a dialética e o desenvolvimento histórico, influenciando amplamente o pensamento filosófico e social. Essas figuras não apenas moldaram o pensamento filosófico na Alemanha, mas também tiveram um impacto profundo em outros campos, como a política e a sociologia, estabelecendo a Alemanha como um centro intelectual e filosófico.\n\nOs festivais e tradições culturais da Alemanha são igualmente impressionantes e atraem visitantes de todo o mundo. A Oktoberfest, talvez o festival mais famoso do país, celebra a cerveja e a cultura bávara, atraindo milhões de turistas a Munique todos os anos. Com suas barracas de cerveja, música ao vivo e pratos tradicionais como pretzels e salsichas, a Oktoberfest é um evento que simboliza a alegria e a hospitalidade alemãs. Outro festival significativo é o Mercado de Natal de Nuremberg, que apresenta uma variedade de artesanato, comida e bebida, oferecendo uma visão encantadora das tradições natalinas alemãs. Esses eventos são uma vitrine das tradições e da cultura alemã, proporcionando uma experiência imersiva para os visitantes e celebrando a herança cultural do país.\n\nA cena artística moderna da Alemanha, especialmente em cidades como Berlim, reflete um país que valoriza a expressão cultural e a diversidade. Berlim, em particular, tornou-se um centro vibrante de arte contemporânea, oferecendo uma plataforma para artistas emergentes e estabelecidos. A cidade abriga uma variedade de galerias, museus e espaços de exibição que destacam a criatividade e a inovação. O ambiente artístico de Berlim é caracterizado por uma mistura de estilos e influências, refletindo a diversidade cultural da cidade e atraindo artistas de todo o mundo. A presença de eventos culturais, como a Bienal de Berlim e o Festival Internacional de Cinema de Berlim, também contribui para a reputação da cidade como um centro global de arte e cultura.\n\nEm suma, a cultura alemã é um mosaico de tradições históricas, realizações artísticas e inovações modernas. Desde a música clássica e a filosofia até os festivais vibrantes e a cena artística contemporânea, a Alemanha oferece uma rica tapeçaria cultural que continua a inspirar e a influenciar o mundo. A herança cultural do país não apenas reflete suas profundas raízes históricas, mas também demonstra seu compromisso com a expressão criativa e a diversidade cultural. Com uma rica tradição de contribuição para as artes e as ciências, a Alemanha permanece um importante centro cultural global, oferecendo uma riqueza de experiências e influências para aqueles que exploram sua história e cultura.",
+      "publicationDate": "2023-09-05T00:00:00.000Z",
+      "user": {
+        "id": "a1b2c3d4",
+        "name": "John Doe",
+        "role": "editor"
+      }
+    },
+    {
+      "id": "km23IIk",
+      "imageUrl": "https://brasilalemanhanews.com.br/wp-content/uploads/2015/nwdalThomasImophotothek_destaque.JPG",
+      "title": "A Economia da Alemanha",
+      "previewText": "Entenda por que a Alemanha é a maior economia da Europa e a quarta maior do mundo.",
+      "content": "A Alemanha é amplamente reconhecida por sua poderosa economia, ocupando a posição de maior economia da Europa e a quarta maior do mundo. Com um histórico de crescimento estável e robusto, o país se destaca em diversos setores industriais e tecnológicos. Entre os pilares da economia alemã está a indústria automotiva, que é uma das mais avançadas e inovadoras globalmente. Marcas renomadas como Volkswagen, BMW, Mercedes-Benz e Audi são exemplos de empresas que lideram o mercado internacional com suas inovações e qualidade. A indústria automotiva não só contribui significativamente para o PIB da Alemanha, mas também gera um número considerável de empregos, tanto diretamente quanto indiretamente, em toda a cadeia produtiva. Essa força no setor automotivo demonstra a capacidade da Alemanha de manter uma liderança global em engenharia e produção de veículos.\n\nAlém do setor automotivo, a Alemanha se destaca como um líder em ciência, tecnologia e inovação. O país investe pesadamente em pesquisa e desenvolvimento, o que resulta em avanços significativos em diversos campos, como a biotecnologia, a engenharia e as tecnologias da informação. Instituições de pesquisa e universidades na Alemanha são conhecidas por suas contribuições para o conhecimento global e por sua capacidade de colaborar com a indústria para transformar descobertas científicas em aplicações comerciais. A ênfase em pesquisa e inovação é uma das chaves para o sucesso econômico da Alemanha, pois permite que o país se mantenha competitivo em um mercado global em rápida mudança.\n\nA economia alemã é caracterizada por sua diversificação e resiliência. Além da indústria automotiva e da pesquisa científica, o país possui um setor manufatureiro altamente desenvolvido, que inclui a produção de máquinas, equipamentos e produtos químicos. A diversificação econômica da Alemanha proporciona uma base sólida para enfrentar desafios econômicos e ajustar-se às mudanças nas condições do mercado global. O setor de serviços, incluindo finanças, seguros e turismo, também desempenha um papel importante na economia do país, contribuindo para a criação de empregos e o crescimento econômico.\n\nOutro fator essencial para o sucesso econômico da Alemanha é seu sistema educacional de alta qualidade e sua infraestrutura de classe mundial. O país possui um sistema de educação robusto que prepara bem os jovens para as demandas do mercado de trabalho. As universidades e escolas técnicas na Alemanha são altamente respeitadas e oferecem formação de ponta em uma variedade de disciplinas. Além disso, a infraestrutura do país, incluindo redes de transporte eficientes e modernas, facilita o comércio e a movimentação de bens e serviços. A combinação de uma força de trabalho qualificada e uma infraestrutura de alta qualidade cria um ambiente favorável para os negócios e atrai talentos de todo o mundo.\n\nEm resumo, a economia da Alemanha é um exemplo notável de sucesso global, caracterizada por sua liderança em setores industriais e tecnológicos, investimentos em pesquisa e desenvolvimento, e uma base econômica diversificada. Com um sistema educacional sólido e uma infraestrutura avançada, a Alemanha continua a ser um dos destinos mais atraentes para negócios e investimentos, mantendo sua posição como uma potência econômica global. O país demonstra como a combinação de inovação, diversificação e um ambiente de negócios favorável pode levar ao crescimento e à prosperidade econômica a longo prazo.",
+      "publicationDate": "2023-09-10T00:00:00.000Z",
+      "user": {
+        "id": "a1b2c3d4",
+        "name": "John Doe",
+        "role": "editor"
+      }
+    },
+    {
+      "id": 4,
+      "imageUrl": "https://partiupelomundo.com/wp-content/uploads/2017/01/lugares-mais-bonitos-alemanha.jpg",
+      "title": "Turismo na Alemanha",
+      "previewText": "Explore os destinos turísticos mais populares da Alemanha, de cidades históricas a paisagens deslumbrantes.",
+      "content": "A Alemanha é um destino turístico fascinante, oferecendo uma rica combinação de atrações urbanas e naturais que cativam visitantes de todas as partes do mundo. O país é conhecido por suas cidades históricas, castelos deslumbrantes e paisagens naturais deslumbrantes. Em Berlim, a capital vibrante, os turistas podem explorar marcos históricos como o Portão de Brandemburgo e o Memorial do Muro de Berlim, enquanto desfrutam de uma cena cultural efervescente que inclui museus de renome mundial e uma vida noturna animada. Munique, no sul da Alemanha, é famosa por suas tradições bávaras, incluindo a icônica Oktoberfest, que celebra a cultura da cerveja e atrai milhões de visitantes a cada ano. A cidade também é um ponto de partida ideal para explorar a região da Baviera, com suas paisagens montanhosas e vilarejos pitorescos.\n\nA Floresta Negra, localizada no sudoeste da Alemanha, oferece uma experiência encantadora com suas trilhas para caminhadas, lagos tranquilos e vilarejos tradicionais. É uma região ideal para os amantes da natureza e oferece uma oportunidade para desfrutar de atividades ao ar livre, como caminhadas, passeios de bicicleta e esqui. A área também é conhecida por suas fontes termais e spas, proporcionando uma experiência de relaxamento e rejuvenescimento. Além disso, a Floresta Negra é famosa por sua culinária local, que inclui pratos como o tradicional bolo Floresta Negra e o presunto defumado.\n\nOs castelos da Alemanha são outra grande atração turística. O Castelo de Neuschwanstein, por exemplo, é um dos mais emblemáticos e inspirou o famoso castelo da Disney. Situado nas montanhas da Baviera, este castelo encantador oferece vistas espetaculares e uma arquitetura de conto de fadas que fascina visitantes de todas as idades. O Castelo de Hohenzollern, localizado na região da Suábia, também é um exemplo notável de arquitetura medieval e oferece uma visão fascinante da história da Alemanha. Estes castelos não são apenas maravilhas arquitetônicas, mas também oferecem uma visão da rica história e cultura do país.\n\nAlém das grandes cidades e das atrações naturais, a Alemanha é conhecida por seus eventos culturais e festivais. O Festival de Natal de Nuremberg é um dos mais famosos e oferece uma experiência mágica com suas barracas de mercado, decoração festiva e produtos artesanais. Outros eventos notáveis incluem o Festival de Música de Berlim, que apresenta uma programação variada de performances musicais, e o Festival de Cinema de Munique, que celebra o cinema europeu e internacional. Participar desses eventos oferece uma imersão na cultura alemã e a oportunidade de vivenciar a hospitalidade e a celebração local.\n\nA Alemanha também é um destino importante para os entusiastas da história e da arquitetura. A cidade de Dresden, por exemplo, é conhecida por sua impressionante arquitetura barroca e sua rica herança cultural. A Catedral de Frauenkirche e o Palácio Zwinger são apenas alguns dos marcos que atraem visitantes interessados na história e na beleza arquitetônica da cidade. A cidade de Heidelberg, com sua antiga universidade e castelo medieval, oferece uma visão do passado acadêmico e histórico da Alemanha. Cada uma dessas cidades e regiões oferece uma experiência única e enriquecedora para os visitantes.\n\nEm resumo, o turismo na Alemanha oferece uma vasta gama de experiências, desde a exploração de cidades vibrantes e históricas até a imersão em paisagens naturais deslumbrantes e a participação em eventos culturais únicos. Com suas atrações diversificadas e sua rica herança cultural, a Alemanha é um destino que promete experiências memoráveis e uma profunda apreciação pela beleza e história do país.",
+      "publicationDate": "2023-09-15T00:00:00.000Z",
+      "user": {
+        "id": "i9j0k1l2",
+        "name": "Alice Johnson",
+        "role": "editor"
+      }
+    },
+    {
+      "id": 5,
+      "imageUrl": "https://www.tatsachen-ueber-deutschland.de/sites/default/files/styles/style_image_small/public/2023-01/244638933-Foto-Industrie-in-Deutschland.jpg?itok=rnA0FbSd",
+      "title": "A Indústria Automotiva Alemã",
+      "previewText": "Saiba mais sobre a renomada indústria automotiva da Alemanha, líder mundial no setor.",
+      "content": "A Alemanha é amplamente reconhecida como um dos líderes globais na indústria automotiva, com um legado que remonta ao início da automobilística moderna. O país é o lar de algumas das marcas de automóveis mais renomadas do mundo, incluindo Volkswagen, Mercedes-Benz, BMW e Audi. Essas marcas não são apenas sinônimo de luxo e desempenho, mas também de qualidade e inovação tecnológica. A indústria automotiva alemã é conhecida por sua engenharia de precisão e por estabelecer padrões elevados em termos de segurança, eficiência e design.\n\nVolkswagen, fundada em 1937, é uma das marcas mais icônicas da Alemanha e tem uma forte presença global com modelos populares como o Golf e o Passat. A Mercedes-Benz, com sua herança de mais de um século, é sinônimo de sofisticação e inovação, oferecendo uma gama de veículos que vão desde o Classe A até o Classe S, conhecidos por suas características de luxo e desempenho superior. BMW, por sua vez, é famosa por seus veículos esportivos e de alto desempenho, enquanto a Audi combina inovação tecnológica com um design elegante e moderno.\n\nAlém das marcas tradicionais, a indústria automotiva alemã está na vanguarda da transição para veículos elétricos e sustentáveis. O país tem investido significativamente em tecnologia de ponta para desenvolver carros elétricos, híbridos e autônomos. A Alemanha tem estabelecido metas ambiciosas para reduzir as emissões de carbono e promover a mobilidade sustentável, com um forte foco em pesquisa e desenvolvimento de novas tecnologias. As iniciativas de mobilidade elétrica incluem não apenas a produção de veículos, mas também a expansão da infraestrutura de carregamento e a implementação de soluções inovadoras para o transporte urbano.\n\nA indústria automotiva também desempenha um papel crucial na economia alemã, empregando milhões de pessoas e contribuindo substancialmente para o PIB do país. O setor não se limita apenas à fabricação de veículos, mas inclui uma ampla gama de fornecedores e parceiros que fornecem componentes e serviços essenciais. A excelência da engenharia alemã e a capacidade de inovação são fatores-chave que sustentam o sucesso contínuo da indústria e a sua posição de liderança no mercado global.\n\nAlém do impacto econômico, a indústria automotiva tem um papel significativo na cultura e na identidade nacional da Alemanha. Eventos como o Salão do Automóvel de Frankfurt são uma plataforma para exibir inovações e tendências no setor, atraindo entusiastas e profissionais de todo o mundo. A paixão pela engenharia automotiva e o compromisso com a qualidade são elementos centrais que definem a marca da Alemanha no cenário automotivo global. Com um histórico de inovação e um futuro promissor, a indústria automotiva alemã continua a ser uma força dominante e uma fonte de orgulho nacional.",
+      "publicationDate": "2023-09-20T00:00:00.000Z",
+      "user": {
+        "id": "a1b2c3d4",
+        "name": "John Doe",
+        "role": "editor"
+      }
+    },
+    {
+      "id": 6,
+      "imageUrl": "https://www.tatsachen-ueber-deutschland.de/sites/default/files/styles/style_image/public/2023-02/AdobeStock_361523785.jpg?itok=iy2DkCf1",
+      "title": "Educação na Alemanha",
+      "previewText": "Conheça o sistema educacional alemão, um dos mais respeitados do mundo.",
+      "content": "A Alemanha é amplamente reconhecida por seu sistema educacional de alta qualidade, que atrai estudantes de todo o mundo devido à sua excelência e acessibilidade. \n\nO sistema educacional alemão é composto por um amplo leque de instituições acadêmicas que vão desde escolas primárias e secundárias até universidades de renome. O país é conhecido por suas universidades de prestígio, como a Universidade de Heidelberg e a Universidade Técnica de Munique, que estão consistentemente classificadas entre as melhores do mundo. Essas instituições oferecem uma ampla gama de cursos e programas em várias disciplinas, com um forte foco em pesquisa e inovação.\n\nUma característica notável do sistema educacional da Alemanha é a sua abordagem prática e orientada para a carreira. O sistema de educação vocacional é altamente desenvolvido, combinando aprendizado teórico com experiência prática em ambientes de trabalho reais. Esse modelo é seguido por muitos países e é visto como um caminho eficaz para preparar os alunos para o mercado de trabalho. A formação vocacional na Alemanha permite que os estudantes adquiram habilidades especializadas e se integrem rapidamente ao setor profissional.\n\nAlém da excelência acadêmica, o sistema educacional alemão é acessível para estudantes internacionais, com muitas universidades oferecendo programas em inglês e oportunidades de bolsas de estudo. O país também promove a mobilidade estudantil através de vários programas de intercâmbio e cooperação internacional. Isso permite que estudantes de diferentes partes do mundo estudem na Alemanha e se beneficiem da sua educação de alta qualidade.\n\nO compromisso da Alemanha com a educação é evidente em seus investimentos contínuos em infraestrutura educacional e em iniciativas para melhorar a qualidade do ensino. As universidades e instituições de pesquisa alemãs são centros de excelência que contribuem para o avanço do conhecimento em diversas áreas. O sistema educacional do país continua a ser um modelo global de excelência acadêmica e inovação, atraindo estudantes e pesquisadores de todo o mundo em busca de uma educação de classe mundial.",
+      "publicationDate": "2023-09-25T00:00:00.000Z",
+      "user": {
+        "id": "i9j0k1l2",
+        "name": "Alice Johnson",
+        "role": "editor"
+      }
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "Excelente artigo sobre a história da Alemanha!",
+      "user": {
+        "id": 2,
+        "name": "Jane Smith",
+        "role": "user"
+      },
+      "articleId": 1
+    },
+    {
+      "id": 2,
+      "body": "Muito interessante, adorei saber mais sobre a cultura alemã.",
+      "user": {
+        "id": 4,
+        "name": "Bob Brown",
+        "role": "user"
+      },
+      "articleId": 2
+    },
+    {
+      "id": 3,
+      "body": "A economia alemã é realmente impressionante.",
+      "user": {
+        "id": 2,
+        "name": "Jane Smith",
+        "role": "user"
+      },
+      "articleId": 3
+    },
+    {
+      "id": 4,
+      "body": "Quero muito visitar a Alemanha um dia!",
+      "user": {
+        "id": 4,
+        "name": "Bob Brown",
+        "role": "user"
+      },
+      "articleId": 4
+    },
+    {
+      "id": 5,
+      "body": "A indústria automotiva alemã é realmente de ponta.",
+      "user": {
+        "id": 2,
+        "name": "Jane Smith",
+        "role": "user"
+      },
+      "articleId": 5
+    },
+    {
+      "id": 6,
+      "body": "O sistema educacional alemão é um exemplo a ser seguido.",
+      "user": {
+        "id": 4,
+        "name": "Bob Brown",
+        "role": "user"
+      },
+      "articleId": 6
+    }
+  ]
+}
