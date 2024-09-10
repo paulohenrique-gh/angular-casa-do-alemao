@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { StatesComponent } from './pages/states/states.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
+import { FullArticleComponent } from './pages/full-article/full-article.component';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'articles',
     component: ArticlesComponent,
+  },
+  {
+    path: 'articles/:articleId',
+    component: FullArticleComponent,
   },
 ];
