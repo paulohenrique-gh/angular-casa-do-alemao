@@ -70,7 +70,7 @@
       }
     },
     {
-      "id": 4,
+      "id": "jkcIi",
       "imageUrl": "https://partiupelomundo.com/wp-content/uploads/2017/01/lugares-mais-bonitos-alemanha.jpg",
       "title": "Turismo na Alemanha",
       "previewText": "Explore os destinos turísticos mais populares da Alemanha, de cidades históricas a paisagens deslumbrantes.",
@@ -83,7 +83,7 @@
       }
     },
     {
-      "id": 5,
+      "id": "pOO09ii",
       "imageUrl": "https://www.tatsachen-ueber-deutschland.de/sites/default/files/styles/style_image_small/public/2023-01/244638933-Foto-Industrie-in-Deutschland.jpg?itok=rnA0FbSd",
       "title": "A Indústria Automotiva Alemã",
       "previewText": "Saiba mais sobre a renomada indústria automotiva da Alemanha, líder mundial no setor.",
@@ -96,7 +96,7 @@
       }
     },
     {
-      "id": 6,
+      "id": "jdlUjj",
       "imageUrl": "https://www.tatsachen-ueber-deutschland.de/sites/default/files/styles/style_image/public/2023-02/AdobeStock_361523785.jpg?itok=iy2DkCf1",
       "title": "Educação na Alemanha",
       "previewText": "Conheça o sistema educacional alemão, um dos mais respeitados do mundo.",
@@ -111,64 +111,92 @@
   ],
   "comments": [
     {
-      "id": 1,
+      "id": "jnuIh",
       "body": "Excelente artigo sobre a história da Alemanha!",
+      "commentDate": "2023-09-02",
       "user": {
-        "id": 2,
+        "id": "i9j0k1l2",
+        "name": "Alice Johnson",
+        "role": "editor"
+      },
+      "articleId": "un89Jjn"
+    },
+    {
+      "id": "jnuj8",
+      "body": "Concordo com o comentário atnerior",
+      "commentDate": "2023-09-04",
+      "user": {
+        "id": "e5f6g7h8",
         "name": "Jane Smith",
         "role": "user"
       },
-      "articleId": 1
+      "articleId": "un89Jjn"
     },
     {
-      "id": 2,
+      "id": "jnPpIh",
+      "body": "Concordo com o comentário antes do anterior",
+      "commentDate": "2023-09-05",
+      "user": {
+        "id": "m3n4o5p6",
+        "name": "Bob Brown",
+        "role": "user"
+      },
+      "articleId": "un89Jjn"
+    },
+    {
+      "id": "vvdfS",
       "body": "Muito interessante, adorei saber mais sobre a cultura alemã.",
+      "commentDate": "2023-10-02",
       "user": {
-        "id": 4,
+        "id": "m3n4o5p6",
         "name": "Bob Brown",
         "role": "user"
       },
-      "articleId": 2
+      "articleId": "8UUjkx"
     },
     {
-      "id": 3,
+      "id": "biijJ",
       "body": "A economia alemã é realmente impressionante.",
+      "commentDate": "2023-10-02",
       "user": {
-        "id": 2,
+        "id": "e5f6g7h8",
         "name": "Jane Smith",
         "role": "user"
       },
-      "articleId": 3
+      "articleId": "km23IIk"
     },
     {
-      "id": 4,
+      "id": "vvvksk",
       "body": "Quero muito visitar a Alemanha um dia!",
+      "commentDate": "2023-10-02",
       "user": {
-        "id": 4,
+        "id": "m3n4o5p6",
         "name": "Bob Brown",
         "role": "user"
       },
-      "articleId": 4
+      "articleId": "jkcIi"
     },
     {
-      "id": 5,
+      "id": "8UUik",
       "body": "A indústria automotiva alemã é realmente de ponta.",
+      "commentDate": "2023-10-02",
       "user": {
-        "id": 2,
+        "id": "e5f6g7h8",
         "name": "Jane Smith",
         "role": "user"
       },
-      "articleId": 5
+      "articleId": "pOO09ii"
     },
     {
-      "id": 6,
+      "id": "90III",
       "body": "O sistema educacional alemão é um exemplo a ser seguido.",
+      "commentDate": "2023-10-02",
       "user": {
-        "id": 4,
+        "id": "m3n4o5p6",
         "name": "Bob Brown",
         "role": "user"
       },
-      "articleId": 6
+      "articleId": "jdlUjj"
     }
   ]
 }
