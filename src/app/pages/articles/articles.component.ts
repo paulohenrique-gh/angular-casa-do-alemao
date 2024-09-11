@@ -27,7 +27,7 @@ import { NewArticleComponent } from '../../components/new-article/new-article.co
 export class ArticlesComponent implements OnInit {
   articles$!: Observable<Article[]>;
   faPlus = faPlus;
-  isModalOpen: boolean = false;
+  isModalOpen: boolean = true;
 
   constructor(private articleService: ArticleService) {}
 
