@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Article } from '../models/article';
 import { Comment } from '../models/comment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ArticleService {
   private articlesBaseUrl: string = 'http://localhost:3000/articles';
-  private commentsBaseUrl: string = 'http://localhost:3000/comments'
+  private commentsBaseUrl: string = 'http://localhost:3000/comments';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   getArticles(): Observable<Article[]> {
     return this.httpClient.get<Article[]>(this.articlesBaseUrl);
@@ -22,6 +22,12 @@ export class ArticleService {
   }
 
   getArticleComments(articleId: string): Observable<Comment[]> {
-    return this.httpClient.get<Comment[]>(`${this.commentsBaseUrl}?articleId=${articleId}`);
+    return this.httpClient
+      .get<Comment[]>(`${this.commentsBaseUrl}?articleId=${articleId}`)
+      .pipe(
+        tap((comments) =>
+          comments.sort( (a, b) => new Date(b.commentDate).getTime() - new Date(a.commentDate).getTime())
+        )
+      );
   }
 }
