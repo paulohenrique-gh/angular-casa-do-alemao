@@ -1,3 +1,8 @@
-<h3 class="font-semibold">{{ comment.user.name }}</h3>
-<p>{{ comment.body }}</p>
-<small class="text-gray-800">{{ comment.commentDate | date: 'dd/MM/yyyy' }}</small>
+<div class="group hover:bg-gray-800 hover:text-gray-400 p-4 rounded">
+  <div class="flex items-center gap-2">
+    <h3 class="font-semibold group-hover:text-white">{{ comment.user.name }}</h3>
+    <span class="text-gray-700 group-hover:text-gray-400">•</span>
+    <small class="text-gray-700 group-hover:text-gray-400">{{ comment.commentDate | date: 'dd/MM/yyyy' }}</small>
+  </div>
+  <p>{{ comment.body }}</p>
+</div>
