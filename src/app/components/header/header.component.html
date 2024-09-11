@@ -1,2 +1,5 @@
-  <h1 class="text-3xl uppercase tracking-wider first-letter:text-5xl">{{ header }}</h1>
-  <hr class="h-px mt-2 my-8 bg-gray-200 border-0 dark:bg-gray-700">
+@let firstLetterSizeClass = size === 'xl' ? 'text-5xl' : 'text-3xl';
+@let textSizeClass = size === 'xl' ? 'text-3xl' : 'text-xl';
+
+<h1 [ngClass]="textSizeClass + ' uppercase tracking-wider first-letter:' + firstLetterSizeClass">{{ header }}</h1>
+<hr class="h-px mt-2 my-8 bg-gray-200 border-0 dark:bg-gray-700">

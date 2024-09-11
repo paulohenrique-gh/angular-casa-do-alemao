@@ -4,5 +4,6 @@ export interface Comment {
   id: number;
   body: string;
   user: UserDTO;
+  commentDate: Date;
   articleId: number;
 }
