@@ -1,0 +1,9 @@
+<app-header header="Comentários" size="lg"></app-header>
+
+@if (comments?.length) {
+@for (comment of comments; track $index) {
+<app-comment [comment]="comment"></app-comment>
+}
+} @else {
+
+}
