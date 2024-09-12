@@ -9,8 +9,6 @@ export class CountryInfoService {
   private states: BehaviorSubject<State[]> = new BehaviorSubject<State[]>(germanStates);
   private galleryImages: BehaviorSubject<GalleryImage[]> = new BehaviorSubject<GalleryImage[]>(galleryImages);
 
-  constructor() { }
-
   getStates(): Observable<State[]> {
     return this.states.asObservable();
   }
