@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ArticleFormData } from '../../models/article-form-data';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-new-article',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './new-article.component.html',
-  styleUrl: './new-article.component.scss'
+  templateUrl: './article-form.component.html',
+  styleUrl: './article-form.component.scss'
 })
-export class NewArticleComponent {
+export class ArticleFormComponent {
   @Output() modalClosed = new EventEmitter();
   article: ArticleFormData = {
     title: '',
