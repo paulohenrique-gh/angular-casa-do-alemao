@@ -30,4 +30,8 @@ export class ArticleService {
         )
       );
   }
+
+  saveArticle(article: Article): Observable<Article> {
+    return this.httpClient.post<Article>(this.articlesBaseUrl, article)
+  }
 }
