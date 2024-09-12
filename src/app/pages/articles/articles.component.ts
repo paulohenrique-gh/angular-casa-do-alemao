@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { Article } from '../../models/article';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NewArticleComponent } from '../../components/new-article/new-article.component';
+import { ArticleFormComponent } from '../../components/article-form/article-form.component';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 
 @Component({
@@ -20,8 +20,8 @@ import { ArticleCardComponent } from '../../components/article-card/article-card
     ArticleCardComponent,
     RouterModule,
     FontAwesomeModule,
-    NewArticleComponent
-],
+    ArticleFormComponent,
+  ],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
   host: { class: 'w-full' },
@@ -34,6 +34,10 @@ export class ArticlesComponent implements OnInit {
   constructor(private articleService: ArticleService) {}
 
   ngOnInit(): void {
+    this.loadArticles();
+  }
+
+  private loadArticles(): void {
     this.articles$ = this.articleService.getArticles();
   }
 
@@ -43,5 +47,6 @@ export class ArticlesComponent implements OnInit {
 
   closeNewArticleModal() {
     this.isModalOpen = false;
+    this.loadArticles();
   }
 }
