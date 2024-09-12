@@ -8,8 +8,8 @@ import { Comment } from '../models/comment';
   providedIn: 'root',
 })
 export class ArticleService {
-  private articlesBaseUrl: string = 'http://localhost:3000/articles';
-  private commentsBaseUrl: string = 'http://localhost:3000/comments';
+  private articlesBaseUrl = 'http://localhost:3000/articles';
+  private commentsBaseUrl = 'http://localhost:3000/comments';
 
   constructor(private httpClient: HttpClient) {}
 
