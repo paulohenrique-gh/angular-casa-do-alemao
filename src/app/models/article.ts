@@ -1,7 +1,7 @@
 import { UserDTO } from './user-dto';
 
 export interface Article {
-  id: number;
+  id?: number;
   imageUrl: string;
   title: string;
   previewText: string;
