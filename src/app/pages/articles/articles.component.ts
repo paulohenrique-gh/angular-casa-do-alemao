@@ -8,6 +8,7 @@ import { Article } from '../../models/article';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NewArticleComponent } from '../../components/new-article/new-article.component';
+import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 
 @Component({
   selector: 'app-articles',
@@ -16,6 +17,7 @@ import { NewArticleComponent } from '../../components/new-article/new-article.co
     AsyncPipe,
     DatePipe,
     HeaderComponent,
+    ArticleCardComponent,
     RouterModule,
     FontAwesomeModule,
     NewArticleComponent
@@ -27,7 +29,7 @@ import { NewArticleComponent } from '../../components/new-article/new-article.co
 export class ArticlesComponent implements OnInit {
   articles$!: Observable<Article[]>;
   faPlus = faPlus;
-  isModalOpen: boolean = true;
+  isModalOpen = false;
 
   constructor(private articleService: ArticleService) {}
 
@@ -35,12 +37,11 @@ export class ArticlesComponent implements OnInit {
     this.articles$ = this.articleService.getArticles();
   }
 
-  loadDefaultImage(event: any): void {
-    event.target.src =
-      'https://img.freepik.com/fotos-gratis/uma-pequena-bandeira-da-alemanha-na-cidade-borrada_485709-15.jpg';
-  }
-
   openNewArticleModal() {
     this.isModalOpen = true;
+  }
+
+  closeNewArticleModal() {
+    this.isModalOpen = false;
   }
 }
