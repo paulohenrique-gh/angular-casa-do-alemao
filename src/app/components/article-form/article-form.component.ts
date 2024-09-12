@@ -39,13 +39,6 @@ export class ArticleFormComponent {
   closeModal(): void {
     this.modalClosed.emit();
     this.articleForm.reset();
-    this.snackBar.open('Artigo criado com sucesso', '&times;', {
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: [
-        'snackbar-custom',
-      ]
-    });
   }
 
   submit(): void {
@@ -60,8 +53,21 @@ export class ArticleFormComponent {
         next: (data) => {
           console.log(data);
           this.modalClosed.emit();
+          this.openSnackBar();
         },
+        error: (error) => console.log(error)
       });
     }
+  }
+
+  openSnackBar(): void {
+    this.snackBar.open('Artigo criado com sucesso', '', {
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: [
+        'snackbar-custom',
+      ],
+      duration: 3000
+    });
   }
 }
