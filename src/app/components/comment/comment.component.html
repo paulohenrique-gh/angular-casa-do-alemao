@@ -1,6 +1,6 @@
 <div class="group hover:bg-gray-100 p-4 rounded">
   <div class="flex items-center gap-2">
-    <h3 class="font-semibold ">{{ comment.user.name }}</h3>
+    <h3 class="font-semibold ">{{ comment.user?.name }}</h3>
     <span class="text-gray-700">•</span>
     <small class="text-gray-700">{{ comment.commentDate | date: 'dd/MM/yyyy' }}</small>
   </div>
