@@ -34,7 +34,7 @@ export class ArticlesComponent implements OnInit {
   faPlus = faPlus;
   isFormModalOpen = false;
   isDeleteModalOpen = false;
-  articleToDeleteId = '';
+  selectedArticle: Article | null = null;
 
   constructor(
     private articleService: ArticleService,
@@ -49,45 +49,60 @@ export class ArticlesComponent implements OnInit {
     this.articles$ = this.articleService.getArticles();
   }
 
-  openNewArticleModal(): void {
-    this.isFormModalOpen = true;
-  }
-
-  openDeleteConfirmModal(articleId: string): void {
-    this.articleToDeleteId = articleId;
-    this.isDeleteModalOpen = true;
-  }
-
-  closeNewArticleModal() {
-    this.isFormModalOpen = false;
-    this.loadArticles();
-  }
-
-  closeDeleteModal(): void {
-    this.isDeleteModalOpen = false;
-  }
-
-  confirmNewArticle(): void {
-    this.openSnackBar('Artigo criado com sucesso');
-    this.closeNewArticleModal();
-  }
-
-  deleteArticle(): void {
-    this.articleService.deleteArticle(this.articleToDeleteId).subscribe({
-      next: () => {
-        this.isDeleteModalOpen = false;
-        this.openSnackBar('Artigo excluído com sucesso');
-        this.loadArticles();
-      },
-    });
-  }
-
-  openSnackBar(message: string): void {
+  private openSnackBar(message: string): void {
     this.snackBar.open(message, '', {
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
       panelClass: ['snackbar-custom'],
       duration: 3000,
+    });
+  }
+
+  openNewArticleFormModal(): void {
+    this.isFormModalOpen = true;
+  }
+
+  openEditArticleFormModal(article: Article) {
+    this.selectedArticle = article;
+    this.isFormModalOpen = true;
+  }
+
+  confirmNewArticle(): void {
+    this.openSnackBar('Artigo criado com sucesso');
+    this.closeArticleFormModal();
+    this.loadArticles();
+  }
+
+  confirmArticleUpdate(): void {
+    this.openSnackBar('Artigo atualizado com sucesso');
+    this.closeArticleFormModal();
+    this.loadArticles();
+  }
+
+  closeArticleFormModal() {
+    this.isFormModalOpen = false;
+    this.selectedArticle = null;
+  }
+
+  openDeleteConfirmModal(article: Article): void {
+    this.selectedArticle = article;
+    this.isDeleteModalOpen = true;
+  }
+
+  closeDeleteModal(): void {
+    this.selectedArticle = null;
+    this.isDeleteModalOpen = false;
+  }
+
+  deleteArticle(): void {
+    if (this.selectedArticle?.id)
+    this.articleService.deleteArticle(this.selectedArticle.id).subscribe({
+      next: () => {
+        this.isDeleteModalOpen = false;
+        this.openSnackBar('Artigo excluído com sucesso');
+        this.selectedArticle = null;
+        this.loadArticles();
+      },
     });
   }
 }
