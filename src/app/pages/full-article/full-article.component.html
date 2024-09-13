@@ -2,7 +2,9 @@
   <ng-container *ngIf="article$ | async as article; else notFound">
     <app-header [header]="article.title"></app-header>
 
+    @if (article.imageUrl) {
     <img [src]="article.imageUrl" alt="" class="w-2/4 mx-auto mb-8 rounded-lg shadow-lg">
+    }
 
     @for (paragraph of article.content | splitParagraph; track $index) {
     <p>{{ paragraph }}</p>
