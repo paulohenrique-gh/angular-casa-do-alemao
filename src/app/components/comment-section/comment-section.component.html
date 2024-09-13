@@ -2,6 +2,8 @@
 
 @if (comments?.length) {
 <div class="flex flex-col gap-8">
+  <app-comment-form [articleId]="articleId"></app-comment-form>
+
   @for (comment of comments; track $index) {
   <app-comment [comment]="comment"></app-comment>
   }
@@ -9,3 +11,6 @@
 } @else {
 
 }
+
+
+<!-- TODO: handle no comments message -->
