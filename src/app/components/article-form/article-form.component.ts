@@ -37,7 +37,6 @@ export class ArticleFormComponent implements OnInit {
   };
   exclamationIcon = faExclamationTriangle;
   closeIcon = faCross;
-  saveMode: 'create' | 'update' = 'create';
 
   constructor(
     private authService: AuthService,
@@ -46,7 +45,6 @@ export class ArticleFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.existingArticle) {
-      this.saveMode = 'update';
       this.article = { ...this.existingArticle };
     }
   }
@@ -59,16 +57,16 @@ export class ArticleFormComponent implements OnInit {
   submit(): void {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser && currentUser.role === 'editor') {
-      const articleToSend: Article = {
+      const articleToSave: Article = {
         ...this.article,
         publicationDate: new Date(),
         user: currentUser,
       };
 
-      if (this.saveMode === 'create') {
-        this.createArticle(articleToSend);
+      if (this.existingArticle) {
+        this.updateArticle(articleToSave);
       } else {
-        this.updateArticle(articleToSend);
+        this.createArticle(articleToSave);
       }
     }
   }
