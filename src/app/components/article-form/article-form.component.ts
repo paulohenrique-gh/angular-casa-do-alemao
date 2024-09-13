@@ -1,5 +1,11 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
-import { ArticleFormData } from '../../models/article-form-data';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
@@ -16,12 +22,14 @@ import { faCross } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './article-form.component.html',
   styleUrl: './article-form.component.scss',
 })
-export class ArticleFormComponent {
+export class ArticleFormComponent implements OnInit {
+  @Input() existingArticle: Article | null = null;
   @Output() modalClosed = new EventEmitter();
-  @Output() formSubmitted = new EventEmitter();
+  @Output() newArticleSubmitted = new EventEmitter();
+  @Output() articleUpdateSubmitted = new EventEmitter();
   @ViewChild('articleForm') articleForm!: NgForm;
 
-  article: ArticleFormData = {
+  article: Article = {
     title: '',
     imageUrl: '',
     previewText: '',
@@ -29,11 +37,19 @@ export class ArticleFormComponent {
   };
   exclamationIcon = faExclamationTriangle;
   closeIcon = faCross;
+  saveMode: 'create' | 'update' = 'create';
 
   constructor(
     private authService: AuthService,
-    private articleService: ArticleService,
+    private articleService: ArticleService
   ) {}
+
+  ngOnInit(): void {
+    if (this.existingArticle) {
+      this.saveMode = 'update';
+      this.article = { ...this.existingArticle };
+    }
+  }
 
   closeModal(): void {
     this.modalClosed.emit();
@@ -43,18 +59,37 @@ export class ArticleFormComponent {
   submit(): void {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser && currentUser.role === 'editor') {
-      const newArticle: Article = {
+      const articleToSend: Article = {
         ...this.article,
         publicationDate: new Date(),
         user: currentUser,
       };
-      this.articleService.saveArticle(newArticle).subscribe({
-        next: () => {
-          this.formSubmitted.emit();
-          this.articleForm.reset();
-        },
-        error: (error) => alert(error)
-      });
+
+      if (this.saveMode === 'create') {
+        this.createArticle(articleToSend);
+      } else {
+        this.updateArticle(articleToSend);
+      }
     }
+  }
+
+  createArticle(article: Article): void {
+    this.articleService.saveArticle(article).subscribe({
+      next: () => {
+        this.newArticleSubmitted.emit();
+        this.articleForm.reset();
+      },
+      error: (error) => console.log(error),
+    });
+  }
+
+  updateArticle(article: Article): void {
+    this.articleService.updateArticle(article).subscribe({
+      next: () => {
+        this.articleUpdateSubmitted.emit();
+        this.articleForm.reset();
+      },
+      error: (error) => console.log(error),
+    });
   }
 }
