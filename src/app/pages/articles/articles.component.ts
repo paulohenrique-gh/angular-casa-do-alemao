@@ -9,6 +9,8 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArticleFormComponent } from '../../components/article-form/article-form.component';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
+import { DialogComponent } from '../../components/dialog/dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-articles',
@@ -21,6 +23,7 @@ import { ArticleCardComponent } from '../../components/article-card/article-card
     RouterModule,
     FontAwesomeModule,
     ArticleFormComponent,
+    DialogComponent,
   ],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
@@ -29,9 +32,14 @@ import { ArticleCardComponent } from '../../components/article-card/article-card
 export class ArticlesComponent implements OnInit {
   articles$!: Observable<Article[]>;
   faPlus = faPlus;
-  isModalOpen = false;
+  isFormModalOpen = false;
+  isDeleteModalOpen = false;
+  articleToDeleteId = '';
 
-  constructor(private articleService: ArticleService) {}
+  constructor(
+    private articleService: ArticleService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.loadArticles();
@@ -41,12 +49,45 @@ export class ArticlesComponent implements OnInit {
     this.articles$ = this.articleService.getArticles();
   }
 
-  openNewArticleModal() {
-    this.isModalOpen = true;
+  openNewArticleModal(): void {
+    this.isFormModalOpen = true;
+  }
+
+  openDeleteConfirmModal(articleId: string): void {
+    this.articleToDeleteId = articleId;
+    this.isDeleteModalOpen = true;
   }
 
   closeNewArticleModal() {
-    this.isModalOpen = false;
+    this.isFormModalOpen = false;
     this.loadArticles();
+  }
+
+  closeDeleteModal(): void {
+    this.isDeleteModalOpen = false;
+  }
+
+  confirmNewArticle(): void {
+    this.openSnackBar('Artigo criado com sucesso');
+    this.closeNewArticleModal();
+  }
+
+  deleteArticle(): void {
+    this.articleService.deleteArticle(this.articleToDeleteId).subscribe({
+      next: () => {
+        this.isDeleteModalOpen = false;
+        this.openSnackBar('Artigo excluído com sucesso');
+        this.loadArticles();
+      },
+    });
+  }
+
+  openSnackBar(message: string): void {
+    this.snackBar.open(message, '', {
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: ['snackbar-custom'],
+      duration: 3000,
+    });
   }
 }
