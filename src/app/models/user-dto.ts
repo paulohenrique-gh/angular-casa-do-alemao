@@ -1,5 +1,5 @@
 export interface UserDTO {
-  id: number;
+  id: string;
   name: string;
   role: 'editor' | 'user';
 }

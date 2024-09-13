@@ -4,7 +4,9 @@
   <ul class="text-gray-400">
     @for (state of states; track $index) {
     <li [ngClass]="(selectedState === state ? 'text-white bg-gray-900 font-semibold ' : '') + 'block p-3 hover:text-white cursor-pointer rounded-md'"
-      (click)="selectState(state.id)">
+        (keydown.enter)="selectState(state.id)"
+        (click)="selectState(state.id)"
+        tabindex="0">
       {{ state.name }}
     </li>
     }

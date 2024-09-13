@@ -1,0 +1,85 @@
+<div class="top-0 left-0 w-screen h-screen fixed flex justify-center items-center z-30">
+  <div class="bg-gray-900 rounded-lg p-6 w-3/4 z-30">
+    <div class="flex justify-between items-center">
+      <h1 class="text-white text-3xl mb-4">Escreva um novo artigo</h1>
+      <span class="text-white text-3xl self-start cursor-pointer" (click)="closeModal()" (keydown.enter)="closeModal()" tabindex="0">&times;</span>
+    </div>
+
+    <form (ngSubmit)="submit()" class="sw-full" #articleForm="ngForm">
+      <div class="mb-5">
+        <div class="flex items-center gap-4">
+          <label for="title" class="block mb-2 text-sm font-medium text-white">Título</label>
+          <span *ngIf="title.dirty && title.hasError('required')" class="text-red-400 mb-2 text-sm">
+            <fa-icon [icon]="exclamationIcon"></fa-icon>
+            Título é obrigatório
+          </span>
+        </div>
+        <input
+          [(ngModel)]="article.title"
+          #title="ngModel"
+          ngModel
+          type="text"
+          id="title"
+          name="title"
+          class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Digite o título do artigo"
+          required/>
+      </div>
+      <div class="mb-5">
+        <label for="imageUrl" class="block mb-2 text-sm font-medium text-white">URL da Imagem</label>
+        <input
+          [(ngModel)]="article.imageUrl"
+          type="text"
+          id="imageUrl"
+          name="imageUrl"
+          class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+          placeholder="https://example.com/image.jpg"/>
+      </div>
+      <div class="mb-5">
+        <div class="flex items-center gap-4">
+          <label for="previewText" class="block mb-2 text-sm font-medium text-white">Texto de prévia</label>
+          <span *ngIf="previewText.dirty && previewText.hasError('required')" class="text-red-400 mb-2 text-sm">
+            <fa-icon [icon]="exclamationIcon"></fa-icon>
+            Texto de prévia é obrigatório
+          </span>
+        </div>
+        <input type="text"
+               #previewText="ngModel"
+               [(ngModel)]="article.previewText"
+               id="previewText"
+               name="previewText"
+               class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+               placeholder="Escreva um breve resumo do artigo"
+               required/>
+      </div>
+      <div class="mb-5">
+        <div class="flex items-center gap-4">
+          <label for="content" class="block mb-2 text-sm font-medium text-white">Conteúdo</label>
+          <span *ngIf="content.dirty && content.hasError('required')" class="text-red-400 mb-2 text-sm">
+            <fa-icon [icon]="exclamationIcon"></fa-icon>
+            Texto de prévia é obrigatório
+          </span>
+        </div>
+        <textarea [(ngModel)]="article.content"
+                  #content="ngModel"
+                  id="content"
+                  name="content"
+                  rows="12"
+                  class="block p-2.5 w-full text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Digite o conteúdo completo do artigo"
+                  required>
+        </textarea>
+      </div>
+      <button
+        type="submit"
+        class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 disabled:bg-gray-400 disabled:cursor-not-allowed"
+        [disabled]="articleForm.invalid"
+      >
+        Enviar
+      </button>
+    </form>
+
+
+  </div>
+  <div class="flex h-screen w-screen absolute bg-gray-900/60 backdrop-blur-lg"></div>
+</div>
