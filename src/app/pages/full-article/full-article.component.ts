@@ -8,6 +8,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { SplitParagraphPipe } from '../../pipes/split-paragraph.pipe';
 import { CommentSectionComponent } from '../../components/comment-section/comment-section.component';
+import { CommentService } from '../../services/comment.service';
 
 @Component({
   selector: 'app-full-article',
@@ -24,6 +25,7 @@ export class FullArticleComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
+    private commentService: CommentService,
     private route: ActivatedRoute
   ) {
     this.articleId = this.route.snapshot.paramMap.get('articleId') || '';
@@ -42,7 +44,7 @@ export class FullArticleComponent implements OnInit {
 
   private loadComments(): void {
     if (this.articleId) {
-      this.comments$ = this.articleService.getArticleComments(this.articleId);
+      this.comments$ = this.commentService.getArticleComments(this.articleId);
     }
   }
 }
