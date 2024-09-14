@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Article } from '../../models/article';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthService } from '../../services/auth.service';
 import { UserDTO } from '../../models/user-dto';
@@ -18,8 +18,8 @@ export class ArticleCardComponent implements OnInit {
   @Input({required: true}) article!: Article;
   @Output() clickDelete = new EventEmitter();
   @Output() clickEdit = new EventEmitter<string>();
-  deleteIcon = faTrash
-  editIcon = faPen
+  deleteIcon = faTrashAlt;
+  editIcon = faEdit;
   currentUser: UserDTO | undefined;
 
   constructor(private authService: AuthService) {}
