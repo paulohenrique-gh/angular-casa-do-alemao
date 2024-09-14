@@ -10,7 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArticleFormComponent } from '../../components/article-form/article-form.component';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { DialogComponent } from '../../components/dialog/dialog.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-articles',
@@ -38,7 +38,7 @@ export class ArticlesComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    private snackBar: MatSnackBar
+    private snackBarService: SnackBarService
   ) {}
 
   ngOnInit(): void {
@@ -47,15 +47,6 @@ export class ArticlesComponent implements OnInit {
 
   private loadArticles(): void {
     this.articles$ = this.articleService.getArticles();
-  }
-
-  private openSnackBar(message: string): void {
-    this.snackBar.open(message, '', {
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: ['snackbar-custom'],
-      duration: 3000,
-    });
   }
 
   openNewArticleFormModal(): void {
@@ -68,13 +59,13 @@ export class ArticlesComponent implements OnInit {
   }
 
   confirmNewArticle(): void {
-    this.openSnackBar('Artigo criado com sucesso');
+    this.snackBarService.openSnackBar('Artigo criado com sucesso');
     this.closeArticleFormModal();
     this.loadArticles();
   }
 
   confirmArticleUpdate(): void {
-    this.openSnackBar('Artigo atualizado com sucesso');
+    this.snackBarService.openSnackBar('Artigo atualizado com sucesso');
     this.closeArticleFormModal();
     this.loadArticles();
   }
@@ -99,8 +90,8 @@ export class ArticlesComponent implements OnInit {
     this.articleService.deleteArticle(this.selectedArticle.id).subscribe({
       next: () => {
         this.isDeleteModalOpen = false;
-        this.openSnackBar('Artigo excluído com sucesso');
         this.selectedArticle = null;
+        this.snackBarService.openSnackBar('Artigo excluído com sucesso');
         this.loadArticles();
       },
     });
