@@ -30,6 +30,10 @@ export class CommentService {
     return this.httpClient.post<Comment>(this.commentsBaseUrl, comment);
   }
 
+  updateComment(comment: Comment): Observable<Comment> {
+    return this.httpClient.put<Comment>(`${this.commentsBaseUrl}/${comment.id}`, comment);
+  }
+
   deleteComment(commentId: string): Observable<Comment> {
     return this.httpClient.delete<Comment>(`${this.commentsBaseUrl}/${commentId}`);
   }
