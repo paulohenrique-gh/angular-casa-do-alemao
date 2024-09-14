@@ -1,11 +1,16 @@
 <app-header header="Comentários" size="lg"></app-header>
 
-@if (comments?.length) {
+<app-comment-form [articleId]="articleId" (commentSubmitted)="loadComments()"></app-comment-form>
+@if ((comments$ | async)?.length) {
 <div class="flex flex-col gap-8">
-  @for (comment of comments; track $index) {
+
+  @for (comment of comments$ | async; track $index) {
   <app-comment [comment]="comment"></app-comment>
   }
 </div>
 } @else {
-
+<p class="text-center">Seja o primeiro a comentar!</p>
 }
+
+
+<!-- TODO: handle no comments message -->

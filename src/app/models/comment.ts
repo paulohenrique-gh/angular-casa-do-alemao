@@ -1,9 +1,9 @@
 import { UserDTO } from './user-dto';
 
 export interface Comment {
-  id: number;
+  id?: string;
   body: string;
-  user: UserDTO;
-  commentDate: Date;
-  articleId: number;
+  user?: UserDTO;
+  commentDate?: Date;
+  articleId?: string;
 }
