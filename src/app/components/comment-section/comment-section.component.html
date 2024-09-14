@@ -5,12 +5,15 @@
 <div class="flex flex-col gap-8">
 
   @for (comment of comments$ | async; track $index) {
-  <app-comment [comment]="comment"></app-comment>
+  <app-comment [comment]="comment" (clickDelete)="openDeleteConfirmModal(comment)"></app-comment>
   }
 </div>
 } @else {
 <p class="text-center">Seja o primeiro a comentar!</p>
 }
 
+@if (isDeleteModalOpen) {
+<app-dialog message="O comentário será excluído" (clickCancel)="closeDeleteModal()" (clickConfirm)="deleteComment()"></app-dialog>
+}
 
 <!-- TODO: handle no comments message -->
