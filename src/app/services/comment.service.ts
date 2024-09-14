@@ -11,7 +11,7 @@ export class CommentService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getArticleComments(articleId: string): Observable<Comment[]> {
+  getComments(articleId: string): Observable<Comment[]> {
     return this.httpClient
       .get<Comment[]>(`${this.commentsBaseUrl}?articleId=${articleId}`)
       .pipe(
@@ -28,5 +28,9 @@ export class CommentService {
 
   saveComment(comment: Comment): Observable<Comment> {
     return this.httpClient.post<Comment>(this.commentsBaseUrl, comment);
+  }
+
+  deleteComment(commentId: string): Observable<Comment> {
+    return this.httpClient.delete<Comment>(`${this.commentsBaseUrl}/${commentId}`);
   }
 }
