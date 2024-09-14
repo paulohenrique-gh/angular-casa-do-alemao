@@ -33,7 +33,9 @@ export class CommentComponent implements OnInit {
     this.isEditEnabled = true;
   }
 
-  notifyUpdate(): void {
+  notifyUpdate(comment: Comment): void {
+    this.comment = comment;
+    this.isEditEnabled = false;
     this.commentUpdated.emit();
   }
 

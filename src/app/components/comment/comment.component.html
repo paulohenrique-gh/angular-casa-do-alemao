@@ -22,5 +22,5 @@
   <p>{{ comment.body }}</p>
 </div>
 } @else {
-  <app-comment-form [articleId]="comment.articleId" [existingComment]="comment" (clickCancelEdit)="cancelEdit()" (commentUpdated)="notifyUpdate()"></app-comment-form>
+  <app-comment-form [articleId]="comment.articleId" [existingComment]="comment" (clickCancelEdit)="cancelEdit()" (commentUpdated)="notifyUpdate($event)"></app-comment-form>
 }

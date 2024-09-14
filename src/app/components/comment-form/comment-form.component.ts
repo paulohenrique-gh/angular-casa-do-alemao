@@ -25,7 +25,7 @@ export class CommentFormComponent implements OnInit {
   @Input() existingComment: Comment | null = null;
   @Input({ required: true }) articleId: string | undefined;
   @Output() commentSubmitted = new EventEmitter();
-  @Output() commentUpdated = new EventEmitter();
+  @Output() commentUpdated = new EventEmitter<Comment>();
   @Output() clickCancelEdit = new EventEmitter();
   @ViewChild('commentForm') commentForm!: NgForm;
   comment: Comment = { body: '' };
@@ -82,8 +82,9 @@ export class CommentFormComponent implements OnInit {
 
   updateComment(comment: Comment) {
     this.commentService.updateComment(comment).subscribe({
-      next: () => {
-        this.commentUpdated.emit();
+      next: (comment) => {
+        this.comment = comment;
+        this.commentUpdated.emit(comment);
       },
       error: (error) => console.log(error),
     });
