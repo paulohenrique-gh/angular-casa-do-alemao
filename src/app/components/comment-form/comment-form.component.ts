@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
@@ -18,9 +25,12 @@ export class CommentFormComponent implements OnInit {
   @Input() existingComment: Comment | null = null;
   @Input({ required: true }) articleId: string | undefined;
   @Output() commentSubmitted = new EventEmitter();
+  @Output() commentUpdated = new EventEmitter();
+  @Output() clickCancelEdit = new EventEmitter();
   @ViewChild('commentForm') commentForm!: NgForm;
   comment: Comment = { body: '' };
   exclamationIcon = faExclamationTriangle;
+  showButtons = false;
 
   constructor(
     private commentService: CommentService,
@@ -30,6 +40,7 @@ export class CommentFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.existingComment) {
       this.comment = { ...this.existingComment };
+      this.showButtons = true;
     }
   }
 
@@ -43,8 +54,20 @@ export class CommentFormComponent implements OnInit {
         user: this.authService.getCurrentUser(),
       };
 
-      this.createComment(commentToSave);
+      if (this.existingComment) {
+        this.updateComment(commentToSave);
+      } else {
+        this.createComment(commentToSave);
+      }
     }
+  }
+
+  cancel(): void {
+    if (!this.existingComment) {
+      this.commentForm.reset();
+    }
+
+    this.clickCancelEdit.emit();
   }
 
   createComment(comment: Comment) {
@@ -53,7 +76,16 @@ export class CommentFormComponent implements OnInit {
         this.commentSubmitted.emit();
         this.commentForm.reset();
       },
-      error: (error) => console.log(error)
+      error: (error) => console.log(error),
+    });
+  }
+
+  updateComment(comment: Comment) {
+    this.commentService.updateComment(comment).subscribe({
+      next: () => {
+        this.commentUpdated.emit();
+      },
+      error: (error) => console.log(error),
     });
   }
 }
