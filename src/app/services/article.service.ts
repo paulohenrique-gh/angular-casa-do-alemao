@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable, switchMap, tap } from 'rxjs';
+import { forkJoin, Observable, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Article } from '../models/article';
 import { CommentService } from './comment.service';
@@ -36,15 +36,29 @@ export class ArticleService {
   }
 
   deleteArticle(articleId: string): Observable<Article> {
-    return this.httpClient.delete<Article>(`${this.articlesBaseUrl}/${articleId}`).pipe(
-      tap(article => {
-        this.commentService.getComments(article.id!).subscribe({
-          next: (commentsToDelete) => {
-            commentsToDelete.forEach(comment => {
-              this.commentService.deleteComment(comment.id!).subscribe()
-            })
+    // https://www.learnrxjs.io/learn-rxjs/operators/transformation/switchmap
+    // https://www.learnrxjs.io/learn-rxjs/operators/combination/forkjoin
+    // https://www.youtube.com/watch?v=RUX7Ghb0GRU
+
+    return this.commentService.getComments(articleId).pipe(
+      switchMap((comments: Comment[]) => {
+        if (!comments.length) {
+          return this.httpClient.delete<Article>(`${this.articlesBaseUrl}/${articleId}`);
+        }
+
+        const deleteObservables: Observable<Comment>[] = comments.map(
+          (comment: Comment) => {
+            return this.commentService.deleteComment(comment.id!);
           }
-        })
+        );
+
+        return forkJoin<Comment[]>(deleteObservables).pipe(
+          switchMap(() => {
+            return this.httpClient.delete<Article>(
+              `${this.articlesBaseUrl}/${articleId}`
+            );
+          })
+        );
       })
     );
   }
