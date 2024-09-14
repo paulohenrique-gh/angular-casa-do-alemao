@@ -1,4 +1,14 @@
-<div class="group hover:bg-gray-100 p-4 rounded">
+<div class="group hover:bg-gray-100 p-4 rounded relative">
+
+  @if (comment.user?.id === currentUser?.id) {
+    <div class="absolute top-3 right-3 flex gap-2">
+      <button type="button" (click)="initDelete()"
+        class="cursor-pointer focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm py-1 px-2 bg-red-600 hover:bg-red-700 focus:ring-red-900">
+        <fa-icon [icon]="deleteIcon"></fa-icon>
+      </button>
+    </div>
+  }
+
   <div class="flex items-center gap-2">
     <h3 class="font-semibold ">{{ comment.user?.name }}</h3>
     <span class="text-gray-700">•</span>

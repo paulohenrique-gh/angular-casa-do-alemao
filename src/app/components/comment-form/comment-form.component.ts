@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { Comment } from '../../models/comment';
@@ -18,6 +18,7 @@ export class CommentFormComponent implements OnInit {
   @Input() existingComment: Comment | null = null;
   @Input({ required: true }) articleId: string | undefined;
   @Output() commentSubmitted = new EventEmitter();
+  @ViewChild('commentForm') commentForm!: NgForm;
   comment: Comment = { body: '' };
   exclamationIcon = faExclamationTriangle;
 
@@ -48,7 +49,10 @@ export class CommentFormComponent implements OnInit {
 
   createComment(comment: Comment) {
     this.commentService.saveComment(comment).subscribe({
-      next: () => this.commentSubmitted.emit(),
+      next: () => {
+        this.commentSubmitted.emit();
+        this.commentForm.reset();
+      },
       error: (error) => console.log(error)
     });
   }
