@@ -5,7 +5,7 @@
 <div class="flex flex-col gap-8">
 
   @for (comment of comments$ | async; track $index) {
-  <app-comment [comment]="comment" (clickDelete)="openDeleteConfirmModal(comment)"></app-comment>
+  <app-comment [comment]="comment" (clickDelete)="openDeleteConfirmModal(comment)" (commentUpdated)="onCommentUpdate()"></app-comment>
   }
 </div>
 } @else {

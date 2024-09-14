@@ -62,4 +62,8 @@ export class CommentSectionComponent implements OnInit {
       });
     }
   }
+
+  onCommentUpdate(): void {
+    this.snackBarService.openSnackBar('Comentário atualizado com sucesso');
+  }
 }
