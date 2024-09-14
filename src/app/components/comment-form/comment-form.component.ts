@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +17,7 @@ import { CommentService } from '../../services/comment.service';
 export class CommentFormComponent implements OnInit {
   @Input() existingComment: Comment | null = null;
   @Input({ required: true }) articleId: string | undefined;
+  @Output() commentSubmitted = new EventEmitter();
   comment: Comment = { body: '' };
   exclamationIcon = faExclamationTriangle;
 
@@ -36,6 +37,7 @@ export class CommentFormComponent implements OnInit {
     if (currentUser) {
       const commentToSave: Comment = {
         ...this.comment,
+        articleId: this.articleId,
         commentDate: new Date(),
         user: this.authService.getCurrentUser(),
       };
@@ -46,6 +48,8 @@ export class CommentFormComponent implements OnInit {
 
   createComment(comment: Comment) {
     this.commentService.saveComment(comment).subscribe({
+      next: () => this.commentSubmitted.emit(),
+      error: (error) => console.log(error)
     });
   }
 }
