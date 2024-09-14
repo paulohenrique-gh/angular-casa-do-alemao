@@ -12,7 +12,7 @@
 
     <hr class="w-48 h-1 mx-auto my-4 border-0 rounded md:my-10 bg-gray-700">
 
-    <app-comment-section [comments]="comments$ | async" [articleId]="article.id"></app-comment-section>
+    <app-comment-section [articleId]="article.id"></app-comment-section>
   </ng-container>
 
   <ng-template #notFound>Article not found</ng-template>
