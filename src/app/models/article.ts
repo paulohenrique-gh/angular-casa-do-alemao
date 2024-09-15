@@ -7,5 +7,6 @@ export interface Article {
   previewText: string;
   content: string;
   publicationDate?: Date;
+  editDate?: Date;
   user?: UserDTO;
 }

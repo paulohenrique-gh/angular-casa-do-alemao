@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable, switchMap } from 'rxjs';
+import { forkJoin, Observable, switchMap, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Article } from '../models/article';
 import { CommentService } from './comment.service';
@@ -17,7 +17,14 @@ export class ArticleService {
   ) {}
 
   getArticles(): Observable<Article[]> {
-    return this.httpClient.get<Article[]>(this.articlesBaseUrl);
+    return this.httpClient.get<Article[]>(this.articlesBaseUrl)
+    .pipe(
+      tap((articles) => {
+        articles.sort((a, b) => {
+          return new Date(b.publicationDate!).getTime() - new Date(a.publicationDate!).getTime();
+        })
+      })
+    );
   }
 
   getArticleById(articleId: string): Observable<Article> {
@@ -29,10 +36,7 @@ export class ArticleService {
   }
 
   updateArticle(article: Article): Observable<Article> {
-    return this.httpClient.put<Article>(
-      `${this.articlesBaseUrl}/${article.id}`,
-      article
-    );
+    return this.httpClient.put<Article>(`${this.articlesBaseUrl}/${article.id}`, article);
   }
 
   deleteArticle(articleId: string): Observable<Article> {
@@ -54,9 +58,7 @@ export class ArticleService {
 
         return forkJoin<Comment[]>(deleteObservables).pipe(
           switchMap(() => {
-            return this.httpClient.delete<Article>(
-              `${this.articlesBaseUrl}/${articleId}`
-            );
+            return this.httpClient.delete<Article>(`${this.articlesBaseUrl}/${articleId}`);
           })
         );
       })

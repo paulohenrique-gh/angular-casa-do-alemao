@@ -24,7 +24,7 @@ import { CommentService } from '../../services/comment.service';
 export class CommentFormComponent implements OnInit {
   @Input() existingComment: Comment | null = null;
   @Input({ required: true }) articleId: string | undefined;
-  @Output() commentSubmitted = new EventEmitter();
+  @Output() commentSubmitted = new EventEmitter<Comment>();
   @Output() commentUpdated = new EventEmitter<Comment>();
   @Output() clickCancelEdit = new EventEmitter();
   @ViewChild('commentForm') commentForm!: NgForm;
@@ -47,16 +47,15 @@ export class CommentFormComponent implements OnInit {
   submit(): void {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
-      const commentToSave: Comment = {
-        ...this.comment,
-        articleId: this.articleId,
-        commentDate: new Date(),
-        user: this.authService.getCurrentUser(),
-      };
+      const commentToSave: Comment = { ...this.comment };
 
       if (this.existingComment) {
+        commentToSave.editDate = new Date();
         this.updateComment(commentToSave);
       } else {
+        commentToSave.articleId = this.articleId;
+        commentToSave.commentDate = new Date();
+        commentToSave.user = currentUser;
         this.createComment(commentToSave);
       }
     }
@@ -72,8 +71,8 @@ export class CommentFormComponent implements OnInit {
 
   createComment(comment: Comment) {
     this.commentService.saveComment(comment).subscribe({
-      next: () => {
-        this.commentSubmitted.emit();
+      next: (newComment: Comment) => {
+        this.commentSubmitted.emit(newComment);
         this.commentForm.reset();
       },
       error: (error) => console.log(error),

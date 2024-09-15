@@ -1,26 +1,29 @@
 @if (!isEditEnabled) {
-<div class="group hover:bg-gray-100 p-4 rounded relative">
+<div class="group bg-gray-100 p-4 rounded relative hover:bg-gray-200">
 
   @if (comment.user?.id === currentUser?.id) {
-    <div class="absolute top-3 right-3 flex gap-2">
-      <button type="button" (click)="initEdit()"
-        class="cursor-pointer focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm py-1 px-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-        <fa-icon [icon]="editIcon"></fa-icon>
-      </button>
-      <button type="button" (click)="initDelete()"
-        class="cursor-pointer focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm py-1 px-2 bg-red-600 hover:bg-red-700 focus:ring-red-900">
-        <fa-icon [icon]="deleteIcon"></fa-icon>
-      </button>
-    </div>
+  <div class="absolute top-3 right-3 flex gap-2">
+    <button type="button" (click)="initEdit()" class="cursor-pointer focus:outline-none text-blue-500 text-lg">
+      <fa-icon [icon]="editIcon"></fa-icon>
+    </button>
+    <button type="button" (click)="initDelete()" class="cursor-pointer focus:outline-none text-red-500 text-lg">
+      <fa-icon [icon]="deleteIcon"></fa-icon>
+    </button>
+  </div>
   }
 
   <div class="flex items-center gap-2">
     <h3 class="font-semibold ">{{ comment.user?.name }}</h3>
     <span class="text-gray-700">•</span>
     <small class="text-gray-700">{{ comment.commentDate | date: 'dd/MM/yyyy' }}</small>
+    <span class="text-gray-700">•</span>
+    @if (comment.editDate) {
+    <small class="text-gray-700">Editado em {{ comment.commentDate | date: 'dd/MM/yyyy' }}</small>
+    }
   </div>
   <p>{{ comment.body }}</p>
 </div>
 } @else {
-  <app-comment-form [articleId]="comment.articleId" [existingComment]="comment" (clickCancelEdit)="cancelEdit()" (commentUpdated)="notifyUpdate($event)"></app-comment-form>
+<app-comment-form [articleId]="comment.articleId" [existingComment]="comment" (clickCancelEdit)="cancelEdit()"
+  (commentUpdated)="notifyUpdate($event)"></app-comment-form>
 }

@@ -5,5 +5,6 @@ export interface Comment {
   body: string;
   user?: UserDTO;
   commentDate?: Date;
+  editDate?: Date;
   articleId?: string;
 }

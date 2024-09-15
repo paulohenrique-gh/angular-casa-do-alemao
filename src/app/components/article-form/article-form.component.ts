@@ -25,8 +25,8 @@ import { faCross } from '@fortawesome/free-solid-svg-icons';
 export class ArticleFormComponent implements OnInit {
   @Input() existingArticle: Article | null = null;
   @Output() modalClosed = new EventEmitter();
-  @Output() newArticleSubmitted = new EventEmitter();
-  @Output() articleUpdateSubmitted = new EventEmitter();
+  @Output() newArticleSubmitted = new EventEmitter<Article>();
+  @Output() articleUpdateSubmitted = new EventEmitter<Article>();
   @ViewChild('articleForm') articleForm!: NgForm;
 
   article: Article = {
@@ -57,15 +57,14 @@ export class ArticleFormComponent implements OnInit {
   submit(): void {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser && currentUser.role === 'editor') {
-      const articleToSave: Article = {
-        ...this.article,
-        publicationDate: new Date(),
-        user: currentUser,
-      };
+      const articleToSave: Article = { ...this.article };
 
       if (this.existingArticle) {
+        articleToSave.editDate = new Date();
         this.updateArticle(articleToSave);
       } else {
+        articleToSave.user = currentUser;
+        articleToSave.publicationDate = new Date();
         this.createArticle(articleToSave);
       }
     }
@@ -73,8 +72,8 @@ export class ArticleFormComponent implements OnInit {
 
   createArticle(article: Article): void {
     this.articleService.saveArticle(article).subscribe({
-      next: () => {
-        this.newArticleSubmitted.emit();
+      next: (newArticle: Article) => {
+        this.newArticleSubmitted.emit(newArticle);
         this.articleForm.reset();
       },
       error: (error) => console.log(error),
@@ -83,8 +82,8 @@ export class ArticleFormComponent implements OnInit {
 
   updateArticle(article: Article): void {
     this.articleService.updateArticle(article).subscribe({
-      next: () => {
-        this.articleUpdateSubmitted.emit();
+      next: (updatedArticle: Article) => {
+        this.articleUpdateSubmitted.emit(updatedArticle);
         this.articleForm.reset();
       },
       error: (error) => console.log(error),
