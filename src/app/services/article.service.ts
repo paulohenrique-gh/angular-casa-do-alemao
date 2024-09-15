@@ -58,9 +58,7 @@ export class ArticleService {
 
         return forkJoin<Comment[]>(deleteObservables).pipe(
           switchMap(() => {
-            return this.httpClient.delete<Article>(
-              `${this.articlesBaseUrl}/${articleId}`
-            );
+            return this.httpClient.delete<Article>(`${this.articlesBaseUrl}/${articleId}`);
           })
         );
       })
