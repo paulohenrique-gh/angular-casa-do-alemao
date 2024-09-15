@@ -1,10 +1,10 @@
 <app-header header="Comentários" size="lg"></app-header>
 
-<app-comment-form [articleId]="articleId" (commentSubmitted)="loadComments()"></app-comment-form>
-@if ((comments$ | async)?.length) {
+<app-comment-form [articleId]="articleId" (commentSubmitted)="onCommentCreation($event)"></app-comment-form>
+@if (comments.length) {
 <div class="flex flex-col gap-8">
 
-  @for (comment of comments$ | async; track $index) {
+  @for (comment of comments; track $index) {
   <app-comment [comment]="comment" (clickDelete)="openDeleteConfirmModal(comment)" (commentUpdated)="onCommentUpdate()"></app-comment>
   }
 </div>
