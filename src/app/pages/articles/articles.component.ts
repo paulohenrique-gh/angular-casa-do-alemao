@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ArticleService } from '../../services/article.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -29,12 +29,13 @@ import { SnackBarService } from '../../services/snack-bar.service';
   styleUrl: './articles.component.scss',
   host: { class: 'w-full' },
 })
-export class ArticlesComponent implements OnInit {
-  articles$!: Observable<Article[]>;
+export class ArticlesComponent implements OnInit, OnDestroy {
+  articles: Article[] = [];
   faPlus = faPlus;
   isFormModalOpen = false;
   isDeleteModalOpen = false;
   selectedArticle: Article | null = null;
+  articlesSubscription!: Subscription;
 
   constructor(
     private articleService: ArticleService,
@@ -45,8 +46,15 @@ export class ArticlesComponent implements OnInit {
     this.loadArticles();
   }
 
+  ngOnDestroy(): void {
+    this.articlesSubscription.unsubscribe();
+  }
+
   private loadArticles(): void {
-    this.articles$ = this.articleService.getArticles();
+    this.articlesSubscription = this.articleService.getArticles().subscribe({
+      next: (data: Article[]) => this.articles = data,
+      error: (error) => console.log(error)
+    });
   }
 
   openNewArticleFormModal(): void {
@@ -58,16 +66,16 @@ export class ArticlesComponent implements OnInit {
     this.isFormModalOpen = true;
   }
 
-  confirmNewArticle(): void {
+  confirmNewArticle(article: Article): void {
+    this.articles = [article, ...this.articles];
     this.snackBarService.openSnackBar('Artigo criado com sucesso');
     this.closeArticleFormModal();
-    this.loadArticles();
   }
 
-  confirmArticleUpdate(): void {
+  confirmArticleUpdate(updatedArticle: Article): void {
+    this.articles.splice(this.articles.indexOf(this.selectedArticle!), 1, updatedArticle);
     this.snackBarService.openSnackBar('Artigo atualizado com sucesso');
     this.closeArticleFormModal();
-    this.loadArticles();
   }
 
   closeArticleFormModal() {
@@ -88,11 +96,11 @@ export class ArticlesComponent implements OnInit {
   deleteArticle(): void {
     if (this.selectedArticle?.id)
     this.articleService.deleteArticle(this.selectedArticle.id).subscribe({
-      next: () => {
+      next: (deletedArticle) => {
+        this.articles = this.articles.filter(article => article.id !== deletedArticle.id);
         this.isDeleteModalOpen = false;
         this.selectedArticle = null;
         this.snackBarService.openSnackBar('Artigo excluído com sucesso');
-        this.loadArticles();
       },
     });
   }
