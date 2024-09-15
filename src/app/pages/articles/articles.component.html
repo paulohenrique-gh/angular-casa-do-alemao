@@ -7,7 +7,7 @@
 </app-header>
 
 <div class="grid grid-cols-3 gap-x-5 gap-y-9 justify-items-center">
-  @for (article of articles$ | async; track $index) {
+  @for (article of articles; track $index) {
   <app-article-card [article]="article" (clickDelete)="openDeleteConfirmModal(article)"
     (clickEdit)="openEditArticleFormModal(article)"></app-article-card>
   }
@@ -15,7 +15,7 @@
 
 @if (isFormModalOpen) {
 <app-article-form [existingArticle]="selectedArticle" (modalClosed)="closeArticleFormModal()"
-  (newArticleSubmitted)="confirmNewArticle()" (articleUpdateSubmitted)="confirmArticleUpdate()"></app-article-form>
+  (newArticleSubmitted)="confirmNewArticle($event)" (articleUpdateSubmitted)="confirmArticleUpdate($event)"></app-article-form>
 }
 
 @if (isDeleteModalOpen) {
