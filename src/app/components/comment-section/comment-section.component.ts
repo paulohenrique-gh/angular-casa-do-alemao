@@ -57,6 +57,10 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
     this.isDeleteModalOpen = true;
   }
 
+  selectCommentToEdit(comment: Comment): void {
+    this.selectedComment = comment;
+  }
+
   closeDeleteModal(): void {
     this.isDeleteModalOpen = false;
   }
@@ -79,7 +83,8 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
     this.comments = [comment, ...this.comments];
   }
 
-  onCommentUpdate(): void {
+  onCommentUpdate(updatedComment: Comment): void {
+    this.comments.splice(this.comments.indexOf(this.selectedComment!), 1, updatedComment)
     this.snackBarService.openSnackBar('Comentário atualizado com sucesso');
   }
 }
