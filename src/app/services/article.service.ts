@@ -36,10 +36,7 @@ export class ArticleService {
   }
 
   updateArticle(article: Article): Observable<Article> {
-    return this.httpClient.put<Article>(
-      `${this.articlesBaseUrl}/${article.id}`,
-      article
-    );
+    return this.httpClient.put<Article>(`${this.articlesBaseUrl}/${article.id}`, article);
   }
 
   deleteArticle(articleId: string): Observable<Article> {
