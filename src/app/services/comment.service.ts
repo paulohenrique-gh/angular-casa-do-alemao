@@ -4,7 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { Comment } from '../models/comment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommentService {
   private commentsBaseUrl = 'http://localhost:3000/comments';
@@ -17,10 +17,7 @@ export class CommentService {
       .pipe(
         tap((comments) =>
           comments.sort((a, b) => {
-            if (a.commentDate && b.commentDate) {
-              return new Date(b.commentDate).getTime() - new Date(a.commentDate).getTime();
-            }
-            return 0;
+            return new Date(b.commentDate!).getTime() - new Date(a.commentDate!).getTime();
           })
         )
       );
@@ -31,10 +28,15 @@ export class CommentService {
   }
 
   updateComment(comment: Comment): Observable<Comment> {
-    return this.httpClient.put<Comment>(`${this.commentsBaseUrl}/${comment.id}`, comment);
+    return this.httpClient.put<Comment>(
+      `${this.commentsBaseUrl}/${comment.id}`,
+      comment
+    );
   }
 
   deleteComment(commentId: string): Observable<Comment> {
-    return this.httpClient.delete<Comment>(`${this.commentsBaseUrl}/${commentId}`);
+    return this.httpClient.delete<Comment>(
+      `${this.commentsBaseUrl}/${commentId}`
+    );
   }
 }
