@@ -19,7 +19,7 @@ export class CommentComponent implements OnInit {
   @Output() clickDelete = new EventEmitter<Comment>();
   @Output() clickEdit = new EventEmitter<Comment>();
   @Output() commentUpdated = new EventEmitter<Comment>();
-  currentUser: UserDTO | undefined = undefined;
+  currentUser!: UserDTO | null;
   deleteIcon = faTrashAlt;
   editIcon = faEdit;
   isEditEnabled = false;
