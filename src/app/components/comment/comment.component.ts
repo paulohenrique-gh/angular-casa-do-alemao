@@ -17,8 +17,9 @@ import { CommentFormComponent } from '../comment-form/comment-form.component';
 export class CommentComponent implements OnInit {
   @Input({required: true}) comment!: Comment;
   @Output() clickDelete = new EventEmitter<Comment>();
-  @Output() commentUpdated = new EventEmitter();
-  currentUser: UserDTO | undefined = undefined;
+  @Output() clickEdit = new EventEmitter<Comment>();
+  @Output() commentUpdated = new EventEmitter<Comment>();
+  currentUser!: UserDTO | null;
   deleteIcon = faTrashAlt;
   editIcon = faEdit;
   isEditEnabled = false;
@@ -31,12 +32,12 @@ export class CommentComponent implements OnInit {
 
   initEdit(): void {
     this.isEditEnabled = true;
+    this.clickEdit.emit(this.comment);
   }
 
   notifyUpdate(comment: Comment): void {
-    this.comment = comment;
     this.isEditEnabled = false;
-    this.commentUpdated.emit();
+    this.commentUpdated.emit(comment);
   }
 
   cancelEdit(): void {

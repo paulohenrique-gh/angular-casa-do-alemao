@@ -81,9 +81,9 @@ export class CommentFormComponent implements OnInit {
 
   updateComment(comment: Comment) {
     this.commentService.updateComment(comment).subscribe({
-      next: (comment) => {
-        this.comment = comment;
-        this.commentUpdated.emit(comment);
+      next: (updatedComment) => {
+        this.commentUpdated.emit(updatedComment);
+        this.commentForm.reset();
       },
       error: (error) => console.log(error),
     });

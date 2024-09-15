@@ -20,7 +20,7 @@ export class ArticleCardComponent implements OnInit {
   @Output() clickEdit = new EventEmitter<string>();
   deleteIcon = faTrashAlt;
   editIcon = faEdit;
-  currentUser: UserDTO | undefined;
+  currentUser!: UserDTO | null;
 
   constructor(private authService: AuthService) {}
 

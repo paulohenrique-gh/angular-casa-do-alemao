@@ -1,0 +1,49 @@
+<div class="flex items-center justify-center p-20">
+  <div
+    class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+        Faça login
+      </h1>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off" class="space-y-4 md:space-y-6">
+        <div>
+          <div class="flex items-center gap-4">
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seu email</label>
+            <span *ngIf="emailControl.touched && emailControl.hasError('required')" class="text-red-400 mb-2 text-sm">
+              <fa-icon [icon]="exclamationIcon"></fa-icon>
+              Email é obrigatório
+            </span>
+            <span *ngIf="emailControl.touched && emailControl.hasError('email')" class="text-red-400 mb-2 text-sm">
+              <fa-icon [icon]="exclamationIcon"></fa-icon>
+              Informe um email válido
+            </span>
+          </div>
+          <input type="email" name="email" id="email" formControlName="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="john@doe.com" required>
+        </div>
+
+        <div>
+          <div class="flex items-center gap-4">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Senha</label>
+            <span *ngIf="passwordControl.touched && passwordControl.hasError('required')"
+              class="text-red-400 mb-2 text-sm">
+              <fa-icon [icon]="exclamationIcon"></fa-icon>
+              Senha é obrigatória
+            </span>
+          </div>
+          <input type="password" name="password" id="password" placeholder="••••••••" formControlName="password"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required>
+        </div>
+        <button type="submit"
+          class="disabled:bg-gray-400 disabled:cursor-not-allowed w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+          Fazer login
+        </button>
+        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+          Não tem conta? <a routerLink="/signup" class="font-medium text-blue-600 hover:underline">Cadastre-se aqui</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
