@@ -11,7 +11,13 @@ import { CommentSectionComponent } from '../../components/comment-section/commen
 @Component({
   selector: 'app-full-article',
   standalone: true,
-  imports: [HeaderComponent, AsyncPipe, CommonModule, SplitParagraphPipe, CommentSectionComponent],
+  imports: [
+    HeaderComponent,
+    AsyncPipe,
+    CommonModule,
+    SplitParagraphPipe,
+    CommentSectionComponent,
+  ],
   templateUrl: './full-article.component.html',
   styleUrl: './full-article.component.scss',
   host: { class: '' },
@@ -20,8 +26,11 @@ export class FullArticleComponent implements OnInit {
   articleId!: string | undefined;
   article$!: Observable<Article>;
 
-  constructor(private articleService: ArticleService, private route: ActivatedRoute) {
-    this.articleId = this.route.snapshot.paramMap.get('articleId') || '';
+  constructor(
+    private articleService: ArticleService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.articleId = this.activatedRoute.snapshot.paramMap.get('articleId') || '';
   }
 
   ngOnInit(): void {

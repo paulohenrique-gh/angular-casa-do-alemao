@@ -19,7 +19,7 @@
             </span>
             <span *ngIf="loginForm.hasError('wrongCredentials')" class="text-red-400 mb-2 text-sm">
               <fa-icon [icon]="exclamationIcon"></fa-icon>
-              Email ou senha inválidos
+              Email ou senha incorretos
             </span>
           </div>
           <input type="email" name="email" id="email" formControlName="email"
@@ -37,7 +37,7 @@
             </span>
             <span *ngIf="loginForm.hasError('wrongCredentials')" class="text-red-400 mb-2 text-sm">
               <fa-icon [icon]="exclamationIcon"></fa-icon>
-              Email ou senha inválidos
+              Email ou senha incorretos
             </span>
           </div>
           <input type="password" name="password" id="password" placeholder="••••••••" formControlName="password"
