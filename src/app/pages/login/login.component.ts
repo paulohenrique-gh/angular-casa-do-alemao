@@ -61,7 +61,7 @@ export class LoginComponent {
             this.snackBarService.notifySuccess('Login efetuado com sucesso');
             this.router.navigate(['']);
           } else {
-            alert('erro no login');
+            this.loginForm.setErrors({ wrongCredentials: true });
           }
         },
       });
