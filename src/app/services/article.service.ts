@@ -22,13 +22,24 @@ export class ArticleService {
       tap((articles) => {
         articles.sort((a, b) => {
           return new Date(b.publicationDate!).getTime() - new Date(a.publicationDate!).getTime();
-        })
+        });
       })
     );
   }
 
   getArticleById(articleId: string): Observable<Article> {
     return this.httpClient.get<Article>(`${this.articlesBaseUrl}/${articleId}`);
+  }
+
+  getArticlesByUserId(userId: string): Observable<Article[]> {
+    const params = { params: { 'user.id': userId } };
+    return this.httpClient.get<Article[]>(this.articlesBaseUrl, params).pipe(
+      tap((articles) => {
+        articles.sort((a, b) => {
+          return new Date(b.publicationDate!).getTime() - new Date(a.publicationDate!).getTime();
+        });
+      })
+    );
   }
 
   saveArticle(article: Article): Observable<Article> {
