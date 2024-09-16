@@ -10,7 +10,7 @@
           <span class="text-white font-medium">{{ currentUser.name }}</span>
           @if (currentUser.role === 'editor') {
             <span class="text-white font-medium">|</span>
-            <a routerLink="#" routerLinkActive="!text-blue-500"
+            <a routerLink="/my-articles" routerLinkActive="!text-blue-500"
               class="block py-2 px-3 text-white font-medium rounded md:p-0 hover:text-blue-500">Meus artigos</a>
           }
 
