@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, of, Subscription, switchMap } from 'rxjs';
 import { ArticleService } from '../../services/article.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { HeaderComponent } from '../../components/header/header.component';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Article } from '../../models/article';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -44,7 +44,8 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   constructor(
     private articleService: ArticleService,
     private snackBarService: SnackBarService,
-    private authService: AuthService
+    private authService: AuthService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -57,10 +58,20 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   }
 
   private loadArticles(): void {
-    this.articlesSubscription = this.articleService.getArticles().subscribe({
+    this.articlesSubscription = this.activatedRoute.url.pipe(
+      switchMap(([url]) => {
+        if (url.path === 'my-articles') {
+          return this.currentUser$.pipe(
+            switchMap(user => user ? this.articleService.getArticlesByUserId(user.id) : of([]))
+          );
+        } else {
+          return this.articleService.getArticles();
+        }
+      })
+    ).subscribe({
       next: (data: Article[]) => this.articles = data,
       error: (error) => console.log(error)
-    });
+    })
   }
 
   openNewArticleFormModal(): void {
