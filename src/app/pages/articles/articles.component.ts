@@ -3,7 +3,7 @@ import { Observable, of, Subscription, switchMap } from 'rxjs';
 import { ArticleService } from '../../services/article.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { HeaderComponent } from '../../components/header/header.component';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Article } from '../../models/article';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -13,6 +13,7 @@ import { DialogComponent } from '../../components/dialog/dialog.component';
 import { SnackBarService } from '../../services/snack-bar.service';
 import { UserDTO } from '../../models/user-dto';
 import { AuthService } from '../../services/auth.service';
+import { LoadingComponent } from "../../components/loading/loading.component";
 
 @Component({
   selector: 'app-articles',
@@ -26,8 +27,9 @@ import { AuthService } from '../../services/auth.service';
     FontAwesomeModule,
     ArticleFormComponent,
     DialogComponent,
-    AsyncPipe
-  ],
+    AsyncPipe,
+    LoadingComponent
+],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
   host: { class: 'w-full' },
@@ -40,12 +42,14 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   selectedArticle: Article | null = null;
   articlesSubscription!: Subscription;
   currentUser$!: Observable<UserDTO | null>;
+  isLoading = true;
 
   constructor(
     private articleService: ArticleService,
     private snackBarService: SnackBarService,
     private authService: AuthService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -69,8 +73,15 @@ export class ArticlesComponent implements OnInit, OnDestroy {
         }
       })
     ).subscribe({
-      next: (data: Article[]) => this.articles = data,
-      error: (error) => console.log(error)
+      next: (data: Article[]) => {
+        this.isLoading = false;
+        this.articles = data;
+      },
+      error: (error) => {
+        this.isLoading = false;
+        console.error('Erro ao carregar artigos: ', error);
+        this.router.navigate(['error']);
+      }
     })
   }
 

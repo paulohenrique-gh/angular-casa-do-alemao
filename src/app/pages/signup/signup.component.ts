@@ -14,11 +14,12 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user';
 import { SnackBarService } from '../../services/snack-bar.service';
 import { Router, RouterModule } from '@angular/router';
+import { LoadingComponent } from '../../components/loading/loading.component';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, FaIconComponent, NgIf, RouterModule],
+  imports: [ReactiveFormsModule, FaIconComponent, NgIf, RouterModule, LoadingComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 })
@@ -32,6 +33,7 @@ export class SignupComponent {
   signupForm: FormGroup;
 
   exclamationIcon = faExclamationTriangle;
+  isLoading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -70,6 +72,8 @@ export class SignupComponent {
 
   onSubmit() {
     if (this.signupForm.valid) {
+      this.isLoading = true;
+
       const formValue = this.signupForm.value;
       const passwordValue = this.passwordGroup.value;
       const user: User = {
@@ -81,10 +85,15 @@ export class SignupComponent {
 
       this.authService.saveUser(user).subscribe({
         next: () => { 
+          this.isLoading = false;
           this.snackBarService.notifySuccess('Cadastro realizado com sucesso');
           this.router.navigate(['login'])
         },
-        error: (error) => console.log(error),
+        error: (error) => {
+          this.isLoading = false;
+          console.error('Erro ao enviar requisição: ', error);
+          this.router.navigate(['error']);
+        },
       });
     } else {
       this.signupForm.markAllAsTouched();
