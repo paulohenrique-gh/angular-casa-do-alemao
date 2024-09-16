@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ArticleService } from '../../services/article.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -11,6 +11,8 @@ import { ArticleFormComponent } from '../../components/article-form/article-form
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { DialogComponent } from '../../components/dialog/dialog.component';
 import { SnackBarService } from '../../services/snack-bar.service';
+import { UserDTO } from '../../models/user-dto';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-articles',
@@ -24,6 +26,7 @@ import { SnackBarService } from '../../services/snack-bar.service';
     FontAwesomeModule,
     ArticleFormComponent,
     DialogComponent,
+    AsyncPipe
   ],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
@@ -36,13 +39,16 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   isDeleteModalOpen = false;
   selectedArticle: Article | null = null;
   articlesSubscription!: Subscription;
+  currentUser$!: Observable<UserDTO | null>;
 
   constructor(
     private articleService: ArticleService,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.currentUser$ = this.authService.getCurrentUser();
     this.loadArticles();
   }
 
