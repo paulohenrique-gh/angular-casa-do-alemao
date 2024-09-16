@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserDTO } from '../models/user-dto';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Login } from '../models/login';
@@ -60,5 +60,10 @@ export class AuthService {
         return userDTO;
       })
     );
+  }
+
+  logout() {
+    localStorage.removeItem('loggedInUser');
+    this.currentUserSubject.next(null);
   }
 }
