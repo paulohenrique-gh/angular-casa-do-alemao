@@ -1,35 +1,40 @@
 @if (isLoading) {
-  <div class="my-80">
-    <app-loading></app-loading>
+<div class="my-80">
+  <app-loading></app-loading>
+</div>
+} @else {
+<app-header header="Artigos">
+  @let currentUser = currentUser$ | async;
+
+  @if (currentUser && currentUser.role === 'editor') {
+  <button type="button"
+    class="flex gap-2 items-center text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+    (click)="openNewArticleFormModal()">
+    <fa-icon [icon]="faPlus"></fa-icon> Novo artigo
+  </button>
+  }
+</app-header>
+
+@if (articles.length === 0) {
+  <div class="my-72">
+    <app-empty-state (clickCta)="openNewArticleFormModal()"></app-empty-state>
   </div>
 } @else {
-  <app-header header="Artigos">
-    @let currentUser = currentUser$ | async;
-
-    @if (currentUser && currentUser.role === 'editor') {
-    <button type="button"
-      class="flex gap-2 items-center text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
-      (click)="openNewArticleFormModal()">
-      <fa-icon [icon]="faPlus"></fa-icon> Novo artigo
-    </button>
-    }
-  </app-header>
-
   <div class="grid grid-cols-3 gap-x-5 gap-y-9 justify-items-center">
     @for (article of articles; track $index) {
     <app-article-card [article]="article" (clickDelete)="openDeleteConfirmModal(article)"
       (clickEdit)="openEditArticleFormModal(article)"></app-article-card>
     }
   </div>
+}
+@if (isFormModalOpen) {
+<app-article-form [existingArticle]="selectedArticle" (modalClosed)="closeArticleFormModal()"
+  (newArticleSubmitted)="confirmNewArticle($event)"
+  (articleUpdateSubmitted)="confirmArticleUpdate($event)"></app-article-form>
+}
 
-  @if (isFormModalOpen) {
-  <app-article-form [existingArticle]="selectedArticle" (modalClosed)="closeArticleFormModal()"
-    (newArticleSubmitted)="confirmNewArticle($event)"
-    (articleUpdateSubmitted)="confirmArticleUpdate($event)"></app-article-form>
-  }
-
-  @if (isDeleteModalOpen) {
-  <app-dialog message="O artigo será excluído" (clickCancel)="closeDeleteModal()"
-    (clickConfirm)="deleteArticle()"></app-dialog>
-  }
+@if (isDeleteModalOpen) {
+<app-dialog message="O artigo será excluído" (clickCancel)="closeDeleteModal()"
+  (clickConfirm)="deleteArticle()"></app-dialog>
+}
 }

@@ -1,0 +1,10 @@
+<p class="text-2xl tracking-widest font-thin">Nada publicado ainda</p>
+@let currentUser = currentUser$ | async;
+
+@if (currentUser && currentUser.role === 'editor') {
+  <button type="button"
+    class="flex gap-2 items-center text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-800 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2"
+    (click)="onClick()">
+    Crie um novo artigo
+  </button>
+}

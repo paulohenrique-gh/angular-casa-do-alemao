@@ -14,6 +14,7 @@ import { SnackBarService } from '../../services/snack-bar.service';
 import { UserDTO } from '../../models/user-dto';
 import { AuthService } from '../../services/auth.service';
 import { LoadingComponent } from "../../components/loading/loading.component";
+import { EmptyStateComponent } from "./empty-state/empty-state.component";
 
 @Component({
   selector: 'app-articles',
@@ -28,7 +29,8 @@ import { LoadingComponent } from "../../components/loading/loading.component";
     ArticleFormComponent,
     DialogComponent,
     AsyncPipe,
-    LoadingComponent
+    LoadingComponent,
+    EmptyStateComponent
 ],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
