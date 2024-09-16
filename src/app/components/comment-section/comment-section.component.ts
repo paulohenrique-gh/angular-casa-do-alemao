@@ -11,6 +11,7 @@ import { SnackBarService } from '../../services/snack-bar.service';
 import { UserDTO } from '../../models/user-dto';
 import { AuthService } from '../../services/auth.service';
 import { RouterModule } from '@angular/router';
+import { LoadingComponent } from "../loading/loading.component";
 
 @Component({
   selector: 'app-comment-section',
@@ -23,9 +24,10 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     DialogComponent,
     RouterModule,
-  ],
+    LoadingComponent
+],
   templateUrl: './comment-section.component.html',
-  styleUrl: './comment-section.component.scss'
+  styleUrl: './comment-section.component.scss',
 })
 export class CommentSectionComponent implements OnInit, OnDestroy {
   @Input({ required: true }) articleId: string | undefined = '';
@@ -34,6 +36,8 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
   currentUser$!: Observable<UserDTO | null>;
   isDeleteModalOpen = false;
   selectedComment: Comment | null = null;
+  isLoading = true;
+  error = false;
 
   constructor(
     private commentService: CommentService,
@@ -52,11 +56,17 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
 
   loadComments(): void {
     if (this.articleId) {
-      this.commentSubscription = this.commentService
-        .getComments(this.articleId)
+      this.commentSubscription = this.commentService.getComments(this.articleId)
         .subscribe({
-          next: (data: Comment[]) => (this.comments = data),
-          error: (error) => console.log(error),
+          next: (data: Comment[]) => {
+            this.isLoading = false;
+            this.comments = data;
+          },
+          error: (error) => {
+            console.error('Erro ao carregar comentários :', error);
+            this.isLoading = false;
+            this.error = true;
+          },
         });
     }
   }
