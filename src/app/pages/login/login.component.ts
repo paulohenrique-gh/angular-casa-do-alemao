@@ -14,11 +14,18 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserDTO } from '../../models/user-dto';
 import { SnackBarService } from '../../services/snack-bar.service';
+import { LoadingComponent } from '../../components/loading/loading.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FaIconComponent, ReactiveFormsModule, CommonModule, RouterModule],
+  imports: [
+    FaIconComponent,
+    ReactiveFormsModule,
+    CommonModule,
+    RouterModule,
+    LoadingComponent,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -29,6 +36,7 @@ export class LoginComponent {
   loginForm: FormGroup;
 
   exclamationIcon = faExclamationTriangle;
+  isLoading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,17 +63,27 @@ export class LoginComponent {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
+      this.isLoading = true;
+
       const login: Login = this.loginForm.value;
       this.authService.login(login).subscribe({
         next: (data: UserDTO | null) => {
           if (data) {
+            this.isLoading = false;
             this.snackBarService.notifySuccess('Login efetuado com sucesso');
-            const nextPage = this.activatedRoute.snapshot.queryParamMap.get('redirectTo') || '';
-            console.log('next', nextPage)
+            const nextPage =
+              this.activatedRoute.snapshot.queryParamMap.get('redirectTo') ||
+              '';
             this.router.navigate([nextPage]);
           } else {
+            this.isLoading = false;
             this.loginForm.setErrors({ wrongCredentials: true });
           }
+        },
+        error: (error) => {
+          this.isLoading = false;
+          console.error('Erro ao enviar requisição: ', error);
+          this.router.navigate(['error']);
         },
       });
     }
