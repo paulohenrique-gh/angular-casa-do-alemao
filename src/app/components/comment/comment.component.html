@@ -1,7 +1,7 @@
 @if (!isEditEnabled) {
 <div class="group bg-gray-100 p-4 rounded relative hover:bg-gray-200">
 
-  @if (comment.user?.id === currentUser?.id) {
+  @if (comment.user?.id === (currentUser$ | async)?.id) {
   <div class="absolute top-3 right-3 flex gap-2">
     <button type="button" (click)="initEdit()" class="cursor-pointer focus:outline-none text-blue-500 text-lg">
       <fa-icon [icon]="editIcon"></fa-icon>

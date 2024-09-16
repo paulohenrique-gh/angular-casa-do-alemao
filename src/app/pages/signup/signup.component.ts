@@ -81,7 +81,7 @@ export class SignupComponent {
 
       this.authService.saveUser(user).subscribe({
         next: () => { 
-          this.snackBarService.openSnackBar('Cadastro realizado com sucesso');
+          this.snackBarService.notifySuccess('Cadastro realizado com sucesso');
           this.router.navigate(['login'])
         },
         error: (error) => console.log(error),

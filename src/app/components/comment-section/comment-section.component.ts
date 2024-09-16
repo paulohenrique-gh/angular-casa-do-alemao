@@ -71,7 +71,7 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
         next: (deletedComment) => {
           this.isDeleteModalOpen = false;
           this.selectedComment = null;
-          this.snackBarService.openSnackBar('Comentário excluído com sucesso');
+          this.snackBarService.notifySuccess('Comentário excluído com sucesso');
           this.comments = this.comments.filter(comment => comment.id !== deletedComment.id);
         },
         error: (error) => console.log(error)
@@ -85,6 +85,6 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
 
   onCommentUpdate(updatedComment: Comment): void {
     this.comments.splice(this.comments.indexOf(this.selectedComment!), 1, updatedComment)
-    this.snackBarService.openSnackBar('Comentário atualizado com sucesso');
+    this.snackBarService.notifySuccess('Comentário atualizado com sucesso');
   }
 }

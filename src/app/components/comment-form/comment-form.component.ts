@@ -3,6 +3,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnDestroy,
   OnInit,
   Output,
   ViewChild,
@@ -13,6 +14,8 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { Comment } from '../../models/comment';
 import { AuthService } from '../../services/auth.service';
 import { CommentService } from '../../services/comment.service';
+import { UserDTO } from '../../models/user-dto';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-comment-form',
@@ -21,7 +24,7 @@ import { CommentService } from '../../services/comment.service';
   templateUrl: './comment-form.component.html',
   styleUrl: './comment-form.component.scss',
 })
-export class CommentFormComponent implements OnInit {
+export class CommentFormComponent implements OnInit, OnDestroy {
   @Input() existingComment: Comment | null = null;
   @Input({ required: true }) articleId: string | undefined;
   @Output() commentSubmitted = new EventEmitter<Comment>();
@@ -31,6 +34,7 @@ export class CommentFormComponent implements OnInit {
   comment: Comment = { body: '' };
   exclamationIcon = faExclamationTriangle;
   showButtons = false;
+  userSubscrition: Subscription | undefined;
 
   constructor(
     private commentService: CommentService,
@@ -44,21 +48,29 @@ export class CommentFormComponent implements OnInit {
     }
   }
 
-  submit(): void {
-    const currentUser = this.authService.getCurrentUser();
-    if (currentUser) {
-      const commentToSave: Comment = { ...this.comment };
+  ngOnDestroy(): void {
+    this.userSubscrition?.unsubscribe();
+  }
 
-      if (this.existingComment) {
-        commentToSave.editDate = new Date();
-        this.updateComment(commentToSave);
-      } else {
-        commentToSave.articleId = this.articleId;
-        commentToSave.commentDate = new Date();
-        commentToSave.user = currentUser;
-        this.createComment(commentToSave);
-      }
-    }
+  submit(): void {
+    this.userSubscrition = this.authService.getCurrentUser().subscribe({
+      next: (currentUser: UserDTO | null) => {
+        if (currentUser) {
+          const commentToSave: Comment = { ...this.comment };
+
+          if (this.existingComment) {
+            commentToSave.editDate = new Date();
+            this.updateComment(commentToSave);
+          } else {
+            commentToSave.articleId = this.articleId;
+            commentToSave.commentDate = new Date();
+            commentToSave.user = currentUser;
+            this.createComment(commentToSave);
+          }
+        }
+      },
+      error: (error) => console.log(error)
+    })
   }
 
   cancel(): void {

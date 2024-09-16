@@ -58,10 +58,10 @@ export class LoginComponent {
       this.authService.login(login).subscribe({
         next: (data: UserDTO | null) => {
           if (data) {
-            this.snackBarService.openSnackBar('Login efetuado com sucesso')
+            this.snackBarService.notifySuccess('Login efetuado com sucesso');
             this.router.navigate(['']);
           } else {
-            alert('erro no login');
+            this.loginForm.setErrors({ wrongCredentials: true });
           }
         },
       });
