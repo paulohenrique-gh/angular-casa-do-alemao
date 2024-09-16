@@ -1,16 +1,17 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Comment } from '../../models/comment';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { UserDTO } from '../../models/user-dto';
 import { AuthService } from '../../services/auth.service';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommentFormComponent } from '../comment-form/comment-form.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-comment',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, CommentFormComponent],
+  imports: [CommonModule, FontAwesomeModule, CommentFormComponent, AsyncPipe],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss'
 })
@@ -19,7 +20,7 @@ export class CommentComponent implements OnInit {
   @Output() clickDelete = new EventEmitter<Comment>();
   @Output() clickEdit = new EventEmitter<Comment>();
   @Output() commentUpdated = new EventEmitter<Comment>();
-  currentUser!: UserDTO | null;
+  currentUser$!: Observable<UserDTO | null>;
   deleteIcon = faTrashAlt;
   editIcon = faEdit;
   isEditEnabled = false;
@@ -27,7 +28,7 @@ export class CommentComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.currentUser = this.authService.getCurrentUser();
+    this.currentUser$ = this.authService.getCurrentUser();
   }
 
   initEdit(): void {

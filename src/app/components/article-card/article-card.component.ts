@@ -1,16 +1,17 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Article } from '../../models/article';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthService } from '../../services/auth.service';
 import { UserDTO } from '../../models/user-dto';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-article-card',
   standalone: true,
-  imports: [RouterModule, CommonModule, FontAwesomeModule],
+  imports: [RouterModule, CommonModule, FontAwesomeModule, AsyncPipe],
   templateUrl: './article-card.component.html',
   styleUrl: './article-card.component.scss'
 })
@@ -20,12 +21,12 @@ export class ArticleCardComponent implements OnInit {
   @Output() clickEdit = new EventEmitter<string>();
   deleteIcon = faTrashAlt;
   editIcon = faEdit;
-  currentUser!: UserDTO | null;
+  currentUser$!: Observable<UserDTO | null>;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.currentUser = this.authService.getCurrentUser();
+    this.currentUser$ = this.authService.getCurrentUser();
   }
 
   loadDefaultImage(event: Event): void {

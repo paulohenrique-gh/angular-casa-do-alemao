@@ -9,18 +9,19 @@ import { Login } from '../models/login';
   providedIn: 'root',
 })
 export class AuthService {
-  private currentUser: UserDTO | null = null;
+  private currentUserSubject: BehaviorSubject<UserDTO | null> = new BehaviorSubject<UserDTO | null>(null);
   private usersBaseUrl = 'http://localhost:3000/users';
 
   constructor(private httpClient: HttpClient) {
     if (localStorage.getItem('loggedInUser')) {
-      const loggedInUser = localStorage.getItem('loggedInUser');
-      this.currentUser = loggedInUser ? JSON.parse(loggedInUser) : null;
+      const storedUser = localStorage.getItem('loggedInUser');
+      const loggedInUser = storedUser ? JSON.parse(storedUser) : null;
+      this.currentUserSubject.next(loggedInUser);
     }
   }
 
-  getCurrentUser(): UserDTO | null {
-    return this.currentUser;
+  getCurrentUser(): Observable<UserDTO | null> {
+    return this.currentUserSubject.asObservable();
   }
 
   saveUser(user: User): Observable<UserDTO> {
@@ -53,7 +54,7 @@ export class AuthService {
           email: user.email,
           role: user.role,
         };
-        this.currentUser = userDTO;
+        this.currentUserSubject.next(userDTO);
         localStorage.setItem('loggedInUser', JSON.stringify(userDTO));
 
         return userDTO;

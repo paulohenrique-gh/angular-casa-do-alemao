@@ -14,6 +14,8 @@ import { AuthService } from '../../services/auth.service';
 import { ArticleService } from '../../services/article.service';
 import { Article } from '../../models/article';
 import { faCross } from '@fortawesome/free-solid-svg-icons';
+import { UserDTO } from '../../models/user-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-form',
@@ -40,7 +42,8 @@ export class ArticleFormComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -55,19 +58,25 @@ export class ArticleFormComponent implements OnInit {
   }
 
   submit(): void {
-    const currentUser = this.authService.getCurrentUser();
-    if (currentUser && currentUser.role === 'editor') {
-      const articleToSave: Article = { ...this.article };
+    this.authService.getCurrentUser().subscribe({
+      next: (currentUser: UserDTO | null) => {
+        if (currentUser && currentUser.role === 'editor') {
+          const articleToSave: Article = { ...this.article };
 
-      if (this.existingArticle) {
-        articleToSave.editDate = new Date();
-        this.updateArticle(articleToSave);
-      } else {
-        articleToSave.user = currentUser;
-        articleToSave.publicationDate = new Date();
-        this.createArticle(articleToSave);
-      }
-    }
+          if (this.existingArticle) {
+            articleToSave.editDate = new Date();
+            this.updateArticle(articleToSave);
+          } else {
+            articleToSave.user = currentUser;
+            articleToSave.publicationDate = new Date();
+            this.createArticle(articleToSave);
+          }
+        } else {
+          this.router.navigate(['login']);
+        }
+      },
+      error: (error) => console.log(error)
+    });
   }
 
   createArticle(article: Article): void {
