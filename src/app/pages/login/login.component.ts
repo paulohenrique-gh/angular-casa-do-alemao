@@ -11,7 +11,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../services/auth.service';
 import { Login } from '../../models/login';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserDTO } from '../../models/user-dto';
 import { SnackBarService } from '../../services/snack-bar.service';
 
@@ -33,8 +33,9 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private snackBarService: SnackBarService,
     private router: Router,
-    private snackBarService: SnackBarService
+    private activatedRoute: ActivatedRoute
   ) {
     this.emailControl = this.formBuilder.control('', [
       Validators.required,
@@ -59,7 +60,9 @@ export class LoginComponent {
         next: (data: UserDTO | null) => {
           if (data) {
             this.snackBarService.notifySuccess('Login efetuado com sucesso');
-            this.router.navigate(['']);
+            const nextPage = this.activatedRoute.snapshot.queryParamMap.get('redirectTo') || '';
+            console.log('next', nextPage)
+            this.router.navigate([nextPage]);
           } else {
             this.loginForm.setErrors({ wrongCredentials: true });
           }
