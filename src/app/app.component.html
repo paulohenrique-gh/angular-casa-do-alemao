@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar [currentUser]="currentUser$ | async" (clickLogout)="handleLogout()"></app-navbar>
 
 <div class="mt-24 flex-grow m-auto container w-9/12 text-gray-900 mb-6">
   <router-outlet></router-outlet>
