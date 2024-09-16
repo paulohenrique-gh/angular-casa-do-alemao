@@ -28,10 +28,9 @@ export class FullArticleComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) {
-    this.articleId =
-      this.activatedRoute.snapshot.paramMap.get('articleId') || '';
+    this.articleId = this.activatedRoute.snapshot.paramMap.get('articleId') || '';
   }
 
   ngOnInit(): void {
