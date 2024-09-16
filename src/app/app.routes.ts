@@ -6,6 +6,7 @@ import { ArticlesComponent } from './pages/articles/articles.component';
 import { FullArticleComponent } from './pages/full-article/full-article.component';
 import {SignupComponent} from "./pages/signup/signup.component";
 import { LoginComponent } from './pages/login/login.component';
+import { userArticlesGuard } from './guards/user-articles.guard';
 
 export const routes: Routes = [
   {
@@ -35,5 +36,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'my-articles',
+    component: ArticlesComponent,
+    canActivate: [userArticlesGuard]
   }
 ];
