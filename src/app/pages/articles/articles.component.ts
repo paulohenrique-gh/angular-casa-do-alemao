@@ -68,13 +68,13 @@ export class ArticlesComponent implements OnInit, OnDestroy {
 
   confirmNewArticle(article: Article): void {
     this.articles = [article, ...this.articles];
-    this.snackBarService.openSnackBar('Artigo criado com sucesso');
+    this.snackBarService.notifySuccess('Artigo criado com sucesso');
     this.closeArticleFormModal();
   }
 
   confirmArticleUpdate(updatedArticle: Article): void {
     this.articles.splice(this.articles.indexOf(this.selectedArticle!), 1, updatedArticle);
-    this.snackBarService.openSnackBar('Artigo atualizado com sucesso');
+    this.snackBarService.notifySuccess('Artigo atualizado com sucesso');
     this.closeArticleFormModal();
   }
 
@@ -100,7 +100,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
         this.articles = this.articles.filter(article => article.id !== deletedArticle.id);
         this.isDeleteModalOpen = false;
         this.selectedArticle = null;
-        this.snackBarService.openSnackBar('Artigo excluído com sucesso');
+        this.snackBarService.notifySuccess('Artigo excluído com sucesso');
       },
     });
   }
