@@ -6,7 +6,6 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { SplitParagraphPipe } from '../../pipes/split-paragraph.pipe';
 import { CommentSectionComponent } from '../../components/comment-section/comment-section.component';
-import { NotFoundComponent } from '../not-found/not-found.component';
 import { Subscription } from 'rxjs';
 import { LoadingComponent } from "../../components/loading/loading.component";
 
@@ -19,7 +18,6 @@ import { LoadingComponent } from "../../components/loading/loading.component";
     CommonModule,
     SplitParagraphPipe,
     CommentSectionComponent,
-    NotFoundComponent,
     LoadingComponent
 ],
   templateUrl: './full-article.component.html',
