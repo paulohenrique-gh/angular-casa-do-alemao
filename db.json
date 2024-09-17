@@ -107,52 +107,13 @@
         "name": "Alice Johnson",
         "role": "editor"
       }
-    },
-    {
-      "id": "8b53",
-      "title": "teste",
-      "imageUrl": "",
-      "previewText": "teste",
-      "content": "teste",
-      "publicationDate": "2024-09-12T21:31:02.198Z",
-      "user": {
-        "id": "sdij9I",
-        "name": "Testador da Silva",
-        "role": "editor"
-      }
-    },
-    {
-      "id": "e84a",
-      "title": "fssssssssss",
-      "imageUrl": "",
-      "previewText": "asddf",
-      "content": "aaaaaaaaaaaaaaaasdf",
-      "publicationDate": "2024-09-12T21:33:22.195Z",
-      "user": {
-        "id": "sdij9I",
-        "name": "Testador da Silva",
-        "role": "editor"
-      }
-    },
-    {
-      "id": "17c3",
-      "title": "teste",
-      "imageUrl": "https://picsum.photos/400/200",
-      "previewText": "teste",
-      "content": "testseLorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pellentesque orci et ullamcorper blandit. Morbi ullamcorper quam et iaculis iaculis. Phasellus venenatis, mauris non venenatis volutpat, lectus libero convallis ipsum, congue vulputate nunc lorem vel enim. Donec libero lorem, elementum id arcu in, pretium faucibus tortor. Ut mollis erat quis ipsum suscipit, sed laoreet sem pellentesque. Donec commodo ex et felis ultrices, in interdum libero posuere. Ut varius convallis nibh eu molestie. Suspendisse scelerisque euismod neque, ut lacinia eros aliquam dapibus. In et aliquam felis. Integer leo magna, venenatis sit amet augue ac, rutrum congue leo.\n\nDonec non lectus vitae purus interdum laoreet vitae at massa. Donec imperdiet risus eu bibendum luctus. Fusce ornare eu tellus varius pretium. Fusce rutrum, nunc vel fringilla tincidunt, nunc felis pharetra urna, eu ullamcorper lorem velit et enim. Donec sit amet accumsan ante. Vivamus sed vulputate neque. Maecenas nunc lorem, posuere id urna eget, imperdiet egestas orci. Aliquam vitae ullamcorper nunc. Praesent sed venenatis tortor, et egestas est. Proin non lorem nulla. Nulla facilisis tincidunt enim id convallis.\n\nEtiam consectetur tempus metus, et feugiat neque pretium quis. Ut quis pulvinar quam, sed tristique quam. Integer in velit pellentesque, congue libero vel, consequat ex. Phasellus facilisis vitae sem fermentum lacinia. Cras in ullamcorper massa, quis accumsan ipsum. Cras ornare ante erat. Aenean pulvinar libero sit amet ornare posuere. Maecenas ligula nibh, vehicula a quam in, pharetra pretium diam. Praesent bibendum sapien tincidunt, blandit ligula quis, rhoncus elit. Pellentesque faucibus interdum arcu convallis malesuada.\n\nMauris pharetra dui rhoncus, sollicitudin mi vitae, dapibus eros. Ut mattis libero sit amet ante facilisis sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam congue convallis ante, ultricies efficitur dui gravida ut. Aenean non nisl eu augue venenatis imperdiet. Vivamus non rutrum lacus. Proin sit amet lectus nec quam efficitur faucibus. Proin sed sagittis velit.\n\nProin sit amet nulla posuere, ultrices metus vitae, rhoncus eros. Maecenas vehicula ipsum in dolor blandit, sit amet congue nunc condimentum. Nulla cursus justo a enim consectetur, eu hendrerit urna accumsan. Donec velit augue, dictum at dapibus eget, commodo nec augue. Nam dignissim felis dapibus nisl consequat, vitae consectetur urna lobortis. Mauris sit amet blandit magna. Sed nunc urna, vulputate eu ligula ut, vestibulum auctor turpis.",
-      "publicationDate": "2024-09-13T12:41:49.722Z",
-      "user": {
-        "id": "sdij9I",
-        "name": "Testador da Silva",
-        "role": "editor"
-      }
     }
   ],
   "comments": [
     {
       "id": "jnuIh",
       "body": "Excelente artigo sobre a história da Alemanha!",
-      "commentDate": "2023-09-02",
+      "commentDate": "2023-09-02T00:30:11.168Z",
       "user": {
         "id": "i9j0k1l2",
         "name": "Alice Johnson",
@@ -163,7 +124,7 @@
     {
       "id": "jnuj8",
       "body": "Concordo com o comentário atnerior",
-      "commentDate": "2023-09-04",
+      "commentDate": "2023-09-04T00:30:11.168Z",
       "user": {
         "id": "e5f6g7h8",
         "name": "Jane Smith",
@@ -174,7 +135,7 @@
     {
       "id": "jnPpIh",
       "body": "Concordo com o comentário antes do anterior",
-      "commentDate": "2023-09-05",
+      "commentDate": "2023-09-05T00:30:11.168Z",
       "user": {
         "id": "m3n4o5p6",
         "name": "Bob Brown",
@@ -185,7 +146,7 @@
     {
       "id": "vvdfS",
       "body": "Muito interessante, adorei saber mais sobre a cultura alemã.",
-      "commentDate": "2023-10-02",
+      "commentDate": "2023-10-02T00:30:11.168Z",
       "user": {
         "id": "m3n4o5p6",
         "name": "Bob Brown",
@@ -196,7 +157,7 @@
     {
       "id": "biijJ",
       "body": "A economia alemã é realmente impressionante.",
-      "commentDate": "2023-10-02",
+      "commentDate": "2023-10-02T00:30:11.168Z",
       "user": {
         "id": "e5f6g7h8",
         "name": "Jane Smith",
@@ -207,7 +168,7 @@
     {
       "id": "vvvksk",
       "body": "Quero muito visitar a Alemanha um dia!",
-      "commentDate": "2023-10-02",
+      "commentDate": "2023-10-02T00:30:11.168Z",
       "user": {
         "id": "m3n4o5p6",
         "name": "Bob Brown",
@@ -218,7 +179,7 @@
     {
       "id": "8UUik",
       "body": "A indústria automotiva alemã é realmente de ponta.",
-      "commentDate": "2023-10-02",
+      "commentDate": "2023-10-02T00:30:11.168Z",
       "user": {
         "id": "e5f6g7h8",
         "name": "Jane Smith",
@@ -229,7 +190,7 @@
     {
       "id": "90III",
       "body": "O sistema educacional alemão é um exemplo a ser seguido.",
-      "commentDate": "2023-10-02",
+      "commentDate": "2023-10-02T00:30:11.168Z",
       "user": {
         "id": "m3n4o5p6",
         "name": "Bob Brown",
