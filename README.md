@@ -27,6 +27,46 @@ Backend: como o foco do projeto era o frontend, foi utilizada a biblioteca JSON 
 | Comentários  | Excluir             | ✔️       | ✔️       | ❌         |
 
 
+## Componentes
+
+```mermaid
+graph LR
+A[App]
+A ----> B[Navbar]
+A ---> C[Router Outlet]
+C ---> D[Home]
+C ---> H[States]
+C ---> G[Gallery]
+C ---> F[Articles]
+C ---> M[Full Article]
+C ---> J[Signup]
+C ---> I[Login]
+C ---> K[Not Found]
+C ---> Q[Error]
+D ---> R[Header]
+H ---> T[Stat Card]
+H ---> R
+G ---> R
+F ----> R
+F ---> E[Article Card]
+F ---> N[Article Form]
+F ---> V[Dialog]
+F ---> U[Loading]
+F ---> S[EmptyState]
+M ---> R
+M ---> O[CommentSection]
+M ---> U
+O ---> R
+O ---> V
+O ---> Y[CommentForm]
+O ---> X[Comment]
+O ---> U
+J ---> U
+I ---> U
+X ---> Y
+A ----> P[Footer]
+```
+
 ## Configuração e execução
 
 ### Requisitos
