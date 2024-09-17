@@ -7,7 +7,9 @@
 - Tailwind
 - Angular Material
 
-Backend: como o foco do projeto era o frontend, foi utilizada a biblioteca JSON Server para simular uma API no backend
+Frontend: foi utilizado Tailwind para estilização geral, e o SnackBar do Angular Material para implementar notificações de sucesso.
+
+Backend: como o foco do projeto era o frontend, foi utilizada a biblioteca JSON Server para simular uma API no backend.
 
 
 ## Funcionalidades e permissões
