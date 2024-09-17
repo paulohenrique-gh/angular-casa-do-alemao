@@ -2,8 +2,8 @@
 
 <div class="grid grid-cols-3 gap-2">
   @for (image of galleryImages$ | async; track $index) {
-  <div>
-    <img class="h-[470px] w-[700px] rounded-lg object-cover" [src]="image.imageUrl" alt="image.descsription">
-  </div>
+    <div>
+      <img class="h-[470px] w-[700px] rounded-lg object-cover" [src]="image.imageUrl" alt="image.descsription">
+    </div>
   }
 </div>

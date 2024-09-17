@@ -3,12 +3,13 @@
 
   <ul class="text-gray-400">
     @for (state of states; track $index) {
-    <li [ngClass]="(selectedState === state ? 'text-white bg-gray-900 font-semibold ' : '') + 'block p-3 hover:text-white cursor-pointer rounded-md'"
+      <li
+        [ngClass]="(selectedState === state ? 'text-white bg-gray-900 font-semibold ' : '') + 'block p-3 hover:text-white cursor-pointer rounded-md'"
         (keydown.enter)="selectState(state.id)"
         (click)="selectState(state.id)"
         tabindex="0">
-      {{ state.name }}
-    </li>
+        {{ state.name }}
+      </li>
     }
   </ul>
 </section>
@@ -26,7 +27,7 @@
   <hr class="w-48 h-1 mx-auto my-4 border-0 rounded md:my-10 bg-gray-700">
 
   @for (paragraph of selectedState?.description | splitParagraph; track $index) {
-  <p>{{ paragraph }}</p>
+    <p>{{ paragraph }}</p>
   }
 
 </section>

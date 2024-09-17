@@ -9,21 +9,21 @@
         <app-header [header]="article.title"></app-header>
         <p class="text-center font-bold">{{ article.user?.name }}</p>
         <div class="flex justify-center items-center gap-2">
-          <small class="text-center">Publicado em {{article.publicationDate | date: 'dd/MM/yyyy'}}</small>
+          <small class="text-center">Publicado em {{ article.publicationDate | date: 'dd/MM/yyyy' }}</small>
           @if (article.editDate) {
-          <span>•</span>
-          <small class="text-center">Atualizado em {{article.editDate | date: 'dd/MM/yyyy'}}</small>
+            <span>•</span>
+            <small class="text-center">Atualizado em {{ article.editDate | date: 'dd/MM/yyyy' }}</small>
           }
         </div>
 
       </div>
 
       @if (article.imageUrl) {
-      <img [src]="article.imageUrl" alt="" class="w-2/4 mx-auto my-8 rounded-lg shadow-lg">
+        <img [src]="article.imageUrl" alt="" class="w-2/4 mx-auto my-8 rounded-lg shadow-lg">
       }
 
       @for (paragraph of article.content | splitParagraph; track $index) {
-      <p>{{ paragraph }}</p>
+        <p>{{ paragraph }}</p>
       }
 
       <hr class="w-48 h-1 mx-auto my-4 border-0 rounded md:my-10 bg-gray-700">
@@ -34,5 +34,3 @@
     }
   </div>
 }
-
-<!-- TODO: error message for when the article loading fails -->
