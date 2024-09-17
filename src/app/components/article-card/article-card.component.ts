@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthService } from '../../services/auth.service';
 import { UserDTO } from '../../models/user-dto';
 import { Observable } from 'rxjs';
+import { defaultCardImageUrl } from '../../../data';
 
 @Component({
   selector: 'app-article-card',
@@ -31,7 +32,7 @@ export class ArticleCardComponent implements OnInit {
 
   loadDefaultImage(event: Event): void {
     const image = event.target as HTMLImageElement;
-    image.src = 'https://img.freepik.com/fotos-gratis/uma-pequena-bandeira-da-alemanha-na-cidade-borrada_485709-15.jpg';
+    image.src = defaultCardImageUrl;
   }
 
   initDelete(): void {

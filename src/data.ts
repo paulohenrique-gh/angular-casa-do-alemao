@@ -346,3 +346,5 @@ export const galleryImages: GalleryImage[] = [
     description: '',
   },
 ];
+
+export const defaultCardImageUrl = 'https://img.freepik.com/fotos-gratis/uma-pequena-bandeira-da-alemanha-na-cidade-borrada_485709-15.jpg';
