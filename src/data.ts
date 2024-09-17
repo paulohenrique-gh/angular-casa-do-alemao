@@ -1,3 +1,22 @@
+export interface Country {
+  populationInMillions: number;
+  capital: string;
+  officialLanguage: string;
+  currency: string;
+  formOfGovernment: string;
+  areaInSquareKm: number;
+  statesQuantity: number;
+  largestCity: string;
+  borders: string[];
+  mainReligion: string;
+  gdp: string;
+  climate: string;
+  mainExports: string[];
+  mainFestivals: string[];
+  mapImageUrl: string;
+  description: string;
+}
+
 export interface State {
   id: number;
   name: string;
@@ -12,6 +31,49 @@ export interface GalleryImage {
   imageUrl: string;
   description: string;
 }
+
+export const germany: Country = {
+  populationInMillions: 83,
+  capital: 'Berlim',
+  officialLanguage: 'Alemão',
+  currency: 'Euro (€)',
+  formOfGovernment: 'República parlamentarista federal',
+  areaInSquareKm: 357022,
+  statesQuantity: 16,
+  largestCity: 'Berlim',
+  borders: [
+    'Dinamarca',
+    'Polônia',
+    'República Tcheca',
+    'Áustria',
+    'Suíça',
+    'França',
+    'Luxemburgo',
+    'Bélgica',
+    'Holanda',
+  ],
+  mainReligion: 'Cristianismo (Católicos e Protestantes)',
+  gdp: '4,5 trilhões de USD (aproximadamente)',
+  climate: 'Temperado',
+  mainExports: ['Automóveis', 'Máquinas', 'Produtos químicos', 'Eletrônicos'],
+  mainFestivals: [
+    'Oktoberfest',
+    'Feira do Livro de Frankfurt',
+    'Festival de Cinema de Berlim',
+  ],
+  mapImageUrl: 'https://i.ibb.co/fS4Tk4m/GM-map.png',
+  description: `A Alemanha, localizada no coração da Europa, é um dos países mais influentes e economicamente poderosos do mundo.
+
+  Com uma população de aproximadamente 83 milhões de habitantes, é o país mais populoso da União Europeia. Sua capital é Berlim, uma cidade histórica e vibrante, conhecida por sua rica herança cultural, museus, e monumentos, como o Portão de Brandemburgo e o Memorial do Muro de Berlim.
+
+  Historicamente, a Alemanha tem um papel importante na história mundial, desde o Sacro Império Romano até as Guerras Mundiais, a divisão entre Alemanha Ocidental e Oriental durante a Guerra Fria, e sua reunificação em 1990. Hoje, o país é uma democracia estável e um dos principais membros da União Europeia, da ONU e da OTAN.
+
+  Economicamente, a Alemanha é a maior economia da Europa e a quarta maior do mundo, famosa por sua indústria automotiva, com marcas como Volkswagen, BMW, Mercedes-Benz e Audi. Além disso, o país é um líder em ciência, tecnologia e inovação.
+
+  Culturalmente, a Alemanha deu ao mundo figuras históricas importantes como os compositores Johann Sebastian Bach e Ludwig van Beethoven, o filósofo Immanuel Kant e o cientista Albert Einstein. O país também é conhecido por seus festivais, como a Oktoberfest, realizada em Munique, que celebra a cultura da cerveja e atrai turistas de todo o mundo.
+
+  Com uma infraestrutura avançada, altos padrões de vida e um sistema educacional de alta qualidade, a Alemanha é um destino atraente para estudantes e profissionais de várias partes do mundo.`,
+};
 
 export const germanStates: State[] = [
   {
@@ -286,4 +348,3 @@ export const galleryImages: GalleryImage[] = [
     description: '',
   },
 ];
-
