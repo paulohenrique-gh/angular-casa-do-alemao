@@ -62,9 +62,7 @@ export const germany: Country = {
     'Festival de Cinema de Berlim',
   ],
   mapImageUrl: 'https://i.ibb.co/fS4Tk4m/GM-map.png',
-  description: `A Alemanha, localizada no coração da Europa, é um dos países mais influentes e economicamente poderosos do mundo.
-
-  Com uma população de aproximadamente 83 milhões de habitantes, é o país mais populoso da União Europeia. Sua capital é Berlim, uma cidade histórica e vibrante, conhecida por sua rica herança cultural, museus, e monumentos, como o Portão de Brandemburgo e o Memorial do Muro de Berlim.
+  description: `A Alemanha, localizada no coração da Europa, é um dos países mais influentes e economicamente poderosos do mundo. Com uma população de aproximadamente 83 milhões de habitantes, é o país mais populoso da União Europeia. Sua capital é Berlim, uma cidade histórica e vibrante, conhecida por sua rica herança cultural, museus, e monumentos, como o Portão de Brandemburgo e o Memorial do Muro de Berlim.
 
   Historicamente, a Alemanha tem um papel importante na história mundial, desde o Sacro Império Romano até as Guerras Mundiais, a divisão entre Alemanha Ocidental e Oriental durante a Guerra Fria, e sua reunificação em 1990. Hoje, o país é uma democracia estável e um dos principais membros da União Europeia, da ONU e da OTAN.
 
