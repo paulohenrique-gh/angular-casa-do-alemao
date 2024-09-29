@@ -7,9 +7,6 @@ export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl):
   if (!password || !confirmPassword) {
     return null;
   }
-  //
-  console.log('password: ', password, 'confirmPassword: ', confirmPassword);
-  console.log(password === confirmPassword);
-  console.log(control)
+
   return password === confirmPassword ? null : { passwordMismatch: true }
 }
