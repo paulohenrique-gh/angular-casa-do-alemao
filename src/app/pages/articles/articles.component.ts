@@ -13,8 +13,8 @@ import { DialogComponent } from '../../components/dialog/dialog.component';
 import { SnackBarService } from '../../services/snack-bar.service';
 import { UserDTO } from '../../models/user-dto';
 import { AuthService } from '../../services/auth.service';
-import { LoadingComponent } from "../../components/loading/loading.component";
-import { EmptyStateComponent } from "./empty-state/empty-state.component";
+import { LoadingComponent } from '../../components/loading/loading.component';
+import { EmptyStateComponent } from './empty-state/empty-state.component';
 
 @Component({
   selector: 'app-articles',
@@ -30,8 +30,8 @@ import { EmptyStateComponent } from "./empty-state/empty-state.component";
     DialogComponent,
     AsyncPipe,
     LoadingComponent,
-    EmptyStateComponent
-],
+    EmptyStateComponent,
+  ],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
   host: { class: 'w-full' },
@@ -64,27 +64,31 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   }
 
   private loadArticles(): void {
-    this.articlesSubscription = this.activatedRoute.url.pipe(
-      switchMap(([url]) => {
-        if (url.path === 'my-articles') {
-          return this.currentUser$.pipe(
-            switchMap(user => user ? this.articleService.getArticlesByUserId(user.id) : of([]))
-          );
-        } else {
-          return this.articleService.getArticles();
-        }
-      })
-    ).subscribe({
-      next: (data: Article[]) => {
-        this.isLoading = false;
-        this.articles = data;
-      },
-      error: (error) => {
-        this.isLoading = false;
-        console.error('Erro ao carregar artigos: ', error);
-        this.router.navigate(['error']);
-      }
-    })
+    this.articlesSubscription = this.activatedRoute.url
+      .pipe(
+        switchMap(([url]) => {
+          if (url.path === 'my-articles') {
+            return this.currentUser$.pipe(
+              switchMap((user) =>
+                user ? this.articleService.getArticlesByUserId(user.id) : of([])
+              )
+            );
+          } else {
+            return this.articleService.getArticles();
+          }
+        })
+      )
+      .subscribe({
+        next: (data: Article[]) => {
+          this.isLoading = false;
+          this.articles = data;
+        },
+        error: (error) => {
+          this.isLoading = false;
+          console.error('Erro ao carregar artigos: ', error);
+          this.router.navigate(['error']);
+        },
+      });
   }
 
   openNewArticleFormModal(): void {
@@ -103,7 +107,11 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   }
 
   confirmArticleUpdate(updatedArticle: Article): void {
-    this.articles.splice(this.articles.indexOf(this.selectedArticle!), 1, updatedArticle);
+    this.articles.splice(
+      this.articles.indexOf(this.selectedArticle!),
+      1,
+      updatedArticle
+    );
     this.snackBarService.notifySuccess('Artigo atualizado com sucesso');
     this.closeArticleFormModal();
   }
@@ -124,14 +132,17 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   }
 
   deleteArticle(): void {
-    if (this.selectedArticle?.id)
-    this.articleService.deleteArticle(this.selectedArticle.id).subscribe({
-      next: (deletedArticle) => {
-        this.articles = this.articles.filter(article => article.id !== deletedArticle.id);
-        this.isDeleteModalOpen = false;
-        this.selectedArticle = null;
-        this.snackBarService.notifySuccess('Artigo excluído com sucesso');
-      },
-    });
+    if (this.selectedArticle?.id) {
+      this.articleService.deleteArticle(this.selectedArticle.id).subscribe({
+        next: (deletedArticle) => {
+          this.articles = this.articles.filter(
+            (article) => article.id !== deletedArticle.id
+          );
+          this.isDeleteModalOpen = false;
+          this.selectedArticle = null;
+          this.snackBarService.notifySuccess('Artigo excluído com sucesso');
+        },
+      });
+    }
   }
 }
