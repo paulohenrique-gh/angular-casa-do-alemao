@@ -2,6 +2,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnDestroy,
   OnInit,
   Output,
   ViewChild,
@@ -16,6 +17,7 @@ import { Article } from '../../models/article';
 import { faCross } from '@fortawesome/free-solid-svg-icons';
 import { UserDTO } from '../../models/user-dto';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-article-form',
@@ -24,12 +26,14 @@ import { Router } from '@angular/router';
   templateUrl: './article-form.component.html',
   styleUrl: './article-form.component.scss',
 })
-export class ArticleFormComponent implements OnInit {
+export class ArticleFormComponent implements OnInit, OnDestroy {
   @Input() existingArticle: Article | null = null;
   @Output() modalClosed = new EventEmitter();
   @Output() newArticleSubmitted = new EventEmitter<Article>();
   @Output() articleUpdateSubmitted = new EventEmitter<Article>();
   @ViewChild('articleForm') articleForm!: NgForm;
+
+  userSubscription: Subscription | null = null;
 
   article: Article = {
     title: '',
@@ -52,13 +56,17 @@ export class ArticleFormComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+    this.userSubscription?.unsubscribe();
+  }
+
   closeModal(): void {
     this.modalClosed.emit();
     this.articleForm.reset();
   }
 
-  submit(): void {
-    this.authService.getCurrentUser().subscribe({
+  onSubmitArticle(): void {
+    this.userSubscription = this.authService.getCurrentUser().subscribe({
       next: (currentUser: UserDTO | null) => {
         if (currentUser && currentUser.role === 'editor') {
           const articleToSave: Article = { ...this.article };

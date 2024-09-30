@@ -61,7 +61,7 @@ export class LoginComponent {
     );
   }
 
-  onSubmit(): void {
+  onSubmitLogin(): void {
     if (this.loginForm.valid) {
       this.isLoading = true;
 
