@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
 
 /**
  * HeaderComponent is a standalone Angular component that represents the header section of the application.
@@ -21,11 +20,16 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
-  @Input({required: true}) header: string | undefined = '';
+export class HeaderComponent implements OnInit {
+  @Input({ required: true }) header: string | undefined = '';
   @Input() size: 'xl' | 'lg' = 'xl';
-  firstLetterSizeClass = this.size === 'xl' ? 'first-letter:text-5xl' : 'first-letter:text-3xl';
-  textSizeClass = this.size === 'xl' ? 'text-3xl' : 'text-xl';
+  firstLetterSizeClass = '';
+  textSizeClass = '';
+
+  ngOnInit(): void {
+    this.firstLetterSizeClass = this.size === 'xl' ? 'first-letter:text-5xl' : 'first-letter:text-3xl';
+    this.textSizeClass = this.size === 'xl' ? 'text-3xl' : 'text-xl';
+  }
 }
